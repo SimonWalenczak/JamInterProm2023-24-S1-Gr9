@@ -1,23 +1,47 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    float time;
-    public float TimerInterval = 5f;
-    float tick;
-    // Start is called before the first frame update
+    public float TimeLeft;
+    public bool TimerOn = false;
+
+    public TextMeshProUGUI TimerTxt;
+
     void Start()
     {
-        
+        TimerOn = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        GetComponent<Text>().text = time.ToString();
-        time = Time.time;
+        if (TimerOn)
+        {
+            if (TimeLeft > 0)
+            {
+                TimeLeft += Time.deltaTime;
+                updateTimer(TimeLeft);
+            }
+            else
+            {
+                Debug.Log("Time is Up");
+                TimeLeft = 0;
+                TimerOn = false;
+            }
+        }
     }
+
+    void updateTimer(float currentTime)
+    {
+        currentTime += 1;
+        float minutes = Mathf.Floor(currentTime / 60);
+        float secondes = Mathf.Floor(currentTime % 60);
+        TimerTxt.text = string.Format("{0:00} : {1:00}", minutes, secondes);
+    }
+
+
+
 }
