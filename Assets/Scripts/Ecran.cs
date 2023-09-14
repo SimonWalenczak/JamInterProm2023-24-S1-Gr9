@@ -14,29 +14,31 @@ public class Ecran : MonoBehaviour
     [SerializeField] private int _maxValue;
 
     public Interactable interactable;
-    
 
     private void Start()
     {
         MakeTimer();
     }
-    
+
     public void MakeTimer()
-    { 
+    {
         Random random = new Random();
         double _startingTimer = random.NextDouble() * (_maxValue - _minValue) + _minValue;
-        
-        _actualTimer = (float) _startingTimer;
+
+        _actualTimer = (float)_startingTimer;
     }
-    
+
     private void Update()
     {
-        _actualTimer -= Time.deltaTime;
-
-        if (_actualTimer <= 0)
+        if (interactable.IsActive == false)
         {
-            interactable.IsActive = true;
-            gameObject.SetActive(false);
+            _actualTimer -= Time.deltaTime;
+
+            if (_actualTimer <= 0)
+            {
+                interactable.IsActive = true;
+                gameObject.SetActive(false);
+            }
         }
     }
 }

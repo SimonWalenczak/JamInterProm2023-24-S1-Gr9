@@ -13,6 +13,6 @@ public class Interactable : MonoBehaviour
     {
         ecran.gameObject.SetActive(true);
         ecran.MakeTimer();
+        IsActive = false;
     }
-    
 }
