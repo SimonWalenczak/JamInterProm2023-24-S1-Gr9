@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         
-        Cursor.visible = false;
+        Cursor.visible = true;
     }
 
     private void Start()
