@@ -1474,6 +1474,7 @@ MonoBehaviour:
   video2: {fileID: 2039779119}
   IsAlien: 0
   screen: {fileID: 594065815}
+  BigButton: {fileID: 877911333}
 --- !u!1 &458946396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,6 +2642,7 @@ GameObject:
   - component: {fileID: 877911330}
   - component: {fileID: 877911329}
   - component: {fileID: 877911332}
+  - component: {fileID: 877911333}
   m_Layer: 0
   m_Name: ResetButton
   m_TagString: Untagged
@@ -2810,6 +2812,25 @@ PolygonCollider2D:
       - {x: 0.375, y: -0.65999997}
       - {x: 0.515, y: -0.59}
   m_UseDelaunayMesh: 0
+--- !u!114 &877911333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877911328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b4489cfcf1aee43b427e86b59aedec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyboardManagers:
+  - {fileID: 611667030}
+  - {fileID: 973880734}
+  - {fileID: 42714442}
+  - {fileID: 2136368279}
+  - {fileID: 594065818}
+  canResetScreen: 0
 --- !u!1 &966770150
 GameObject:
   m_ObjectHideFlags: 0

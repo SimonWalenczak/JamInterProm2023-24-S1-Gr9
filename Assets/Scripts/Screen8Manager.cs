@@ -22,6 +22,7 @@ public class Screen8Manager : MonoBehaviour
     private void Start()
     {
         MakeTimer();
+        ActualTimer = invasionTimer;
     }
 
     public void MakeTimer()
@@ -62,6 +63,7 @@ public class Screen8Manager : MonoBehaviour
         }
     }
 
+    public BigButton BigButton;
     public void OnMouseDown()
     {
         if (screen.activeSelf == false && GameManager.instance.desactivSystem == false)
@@ -69,6 +71,7 @@ public class Screen8Manager : MonoBehaviour
             video1.SetActive(true);
             video2.SetActive(false);
             IsAlien = false;
+            BigButton.canResetScreen = true;
         }
     }
 }
