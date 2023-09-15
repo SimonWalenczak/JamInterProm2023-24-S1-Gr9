@@ -12,6 +12,9 @@ public class BasicScreen : MonoBehaviour
     [SerializeField] private int _minValue;
     [SerializeField] private int _maxValue;
 
+    [SerializeField] private int minChanceValue;
+    [SerializeField] private int maxChanceValue;
+
     private void Start()
     {
         MakeTimer();
@@ -37,9 +40,9 @@ public class BasicScreen : MonoBehaviour
             if (actualTimer <= 0)
             {
                 Random random = new Random();
-                int chance = random.Next(1, 4);
+                int chance = random.Next(minChanceValue, maxChanceValue + 1);
 
-                if (chance == 1)
+                if (chance == minChanceValue)
                 {
                     if (GameManager.instance.isFirstScreen == false)
                     {

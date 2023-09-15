@@ -19,6 +19,8 @@ public class Screen8Manager : MonoBehaviour
 
     public GameObject screen;
 
+    [SerializeField] private int minChanceValue;
+    [SerializeField] private int maxChanceValue;
     private void Start()
     {
         MakeTimer();
@@ -33,7 +35,7 @@ public class Screen8Manager : MonoBehaviour
                                    _minValue * GameManager.instance.TimeMultiplicator1) +
             _minValue * GameManager.instance.TimeMultiplicator1;
 
-        _actualTimerBugScreen = (float) _startingTimer;
+        _actualTimerBugScreen = (float)_startingTimer;
     }
 
     private void Update()
@@ -56,14 +58,21 @@ public class Screen8Manager : MonoBehaviour
 
             if (_actualTimerBugScreen <= 0)
             {
-                MakeTimer();
-                screen.SetActive(true);
-                screen.GetComponent<KeyboardManager>().ChooseKeyboard();
+                Random random = new Random();
+                int chance = random.Next(minChanceValue, maxChanceValue + 1);
+
+                if (chance == minChanceValue)
+                {
+                    MakeTimer();
+                    screen.SetActive(true);
+                    screen.GetComponent<KeyboardManager>().ChooseKeyboard();
+                }
             }
         }
     }
 
     public BigButton BigButton;
+
     public void OnMouseDown()
     {
         if (screen.activeSelf == false && GameManager.instance.desactivSystem == false)
