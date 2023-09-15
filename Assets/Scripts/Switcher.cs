@@ -60,6 +60,7 @@ public class Switcher : MonoBehaviour
     public void OnMouseDown()
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = LevierSprite2;
+        GetComponent<AudioSource>().Play();
     }
 
     public void OnMouseUp()
