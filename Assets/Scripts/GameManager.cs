@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+        
+        Cursor.visible = false;
     }
 
     private void Start()

@@ -6,14 +6,15 @@ public class MouseFollowerGauche : MonoBehaviour
 {
     public float offset2Y;
     public float offset2X;
-    public float moveSpeed = 5f; // Vitesse de déplacement du sprite
-    public float lerpSpeed = 5f; // Vitesse de l'interpolation linéaire
+    public float moveSpeed = 5f; // Vitesse de dï¿½placement du sprite
+    public float lerpSpeed = 5f; // Vitesse de l'interpolation linï¿½aire
 
-    private Vector3 targetPosition; // La position vers laquelle le sprite doit se déplacer
+    private Vector3 targetPosition; // La position vers laquelle le sprite doit se dï¿½placer
 
+    public Camera cam;
     void Update()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
 
         if (mousePosition.x < 0)
         {
@@ -21,10 +22,10 @@ public class MouseFollowerGauche : MonoBehaviour
         }
         else
         {
-            targetPosition = new Vector3(-5.98f, -2.51f, 0f);
+            targetPosition = new Vector3(-4.12f, -6.28f, 0f);
         }
 
-        // Utilisez Lerp pour déplacer le sprite vers la nouvelle position de manière fluide
+        // Utilisez Lerp pour dï¿½placer le sprite vers la nouvelle position de maniï¿½re fluide
         transform.position = Vector3.Lerp(transform.position, targetPosition, lerpSpeed * Time.deltaTime);
     }
 }

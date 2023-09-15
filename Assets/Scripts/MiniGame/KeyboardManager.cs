@@ -9,6 +9,7 @@ public class KeyboardManager : MonoBehaviour
     private List<KeyCode> KeyCodes = new List<KeyCode>();
     public int randIndex;
 
+    public GameObject touch;
     void Start()
     {
         //KeyCodes.Add((KeyCode)'a');
@@ -48,6 +49,8 @@ public class KeyboardManager : MonoBehaviour
             {
                 GameManager.instance.isFirstScreen = false;
             }
+            
+            touch.SetActive(false);
             gameObject.SetActive(!gameObject.activeSelf);
         }
     }
@@ -57,5 +60,6 @@ public class KeyboardManager : MonoBehaviour
         randIndex = Random.Range(0,21);
         KeyCode random = KeyCodes[randIndex];
         KeyboardTouch.text = random.ToString().Replace("KeyCode.", "");
+        touch.SetActive(true);
     }
 }

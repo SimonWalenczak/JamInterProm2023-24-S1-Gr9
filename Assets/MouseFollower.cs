@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class MouseFollower : MonoBehaviour
 {
-    public float offsetY;
-    public float offsetX;
-    public float moveSpeed = 5f; // Vitesse de dÈplacement du sprite
+    public float offset2Y;
+    public float offset2X;
+    public float moveSpeed = 5f; // Vitesse de d√©placement du sprite
+    public float lerpSpeed = 5f; // Vitesse de l'interpolation lin√©aire
 
+    private Vector3 targetPosition; // La position vers laquelle le sprite doit se d√©placer
+
+    public Camera cam;
     void Update()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        // Si la souris est ‡ droite de l'Ècran, dÈplacez le sprite de droite
+        Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+
         if (mousePosition.x > 0)
         {
-            transform.position = new Vector3(mousePosition.x + offsetX, mousePosition.y + offsetY, transform.position.z);
-            // DÈplacez le sprite vers la droite
-
+            targetPosition = new Vector3(mousePosition.x + offset2X, mousePosition.y + offset2Y, transform.position.z);
         }
-        else { 
-            transform.position = new Vector3(5.3f, -2.6f, 0f); // CrÈe un vecteur 3D avec des valeurs x=1.0, y=2.0 et z=3.0
-
+        else
+        {
+            targetPosition = new Vector3(3.85f, -6.26f, 0f);
         }
-        // Obtenez la position actuelle de la souris dans l'espace de jeu
 
-
-        // DÈfinissez la position de votre sprite sur la position de la souris
-
+        // Utilisez Lerp pour d√©placer le sprite vers la nouvelle position de mani√®re fluide
+        transform.position = Vector3.Lerp(transform.position, targetPosition, lerpSpeed * Time.deltaTime);
     }
 }
