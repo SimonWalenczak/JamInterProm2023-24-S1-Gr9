@@ -7,26 +7,24 @@ public class MouseFollowerGauche : MonoBehaviour
     public float offset2Y;
     public float offset2X;
     public float moveSpeed = 5f; // Vitesse de déplacement du sprite
+    public float lerpSpeed = 5f; // Vitesse de l'interpolation linéaire
+
+    private Vector3 targetPosition; // La position vers laquelle le sprite doit se déplacer
 
     void Update()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        // Si la souris est à droite de l'écran, déplacez le sprite de droite
+
         if (mousePosition.x < 0)
         {
-            transform.position = new Vector3(mousePosition.x + offset2X, mousePosition.y + offset2Y, transform.position.z);
-            // Déplacez le sprite vers la droite
-
+            targetPosition = new Vector3(mousePosition.x + offset2X, mousePosition.y + offset2Y, transform.position.z);
         }
         else
         {
-            transform.position = new Vector3(-5.98f, -2.51f ,0f); // Crée un vecteur 3D avec des valeurs x=1.0, y=2.0 et z=3.0
-
+            targetPosition = new Vector3(-5.98f, -2.51f, 0f);
         }
-        // Obtenez la position actuelle de la souris dans l'espace de jeu
 
-
-        // Définissez la position de votre sprite sur la position de la souris
-
+        // Utilisez Lerp pour déplacer le sprite vers la nouvelle position de manière fluide
+        transform.position = Vector3.Lerp(transform.position, targetPosition, lerpSpeed * Time.deltaTime);
     }
 }
