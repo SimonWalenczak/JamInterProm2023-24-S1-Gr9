@@ -6,6 +6,7 @@ using Random = System.Random;
 
 public class Screen8Manager : MonoBehaviour
 {
+    [SerializeField] private float invasionTimer;
     public float _actualTimerBugScreen;
     [SerializeField] private int _minValue;
     [SerializeField] private int _maxValue;
@@ -42,7 +43,7 @@ public class Screen8Manager : MonoBehaviour
             if (ActualTimer <= 0)
             {
                 IsAlien = true;
-                ActualTimer = 5;
+                ActualTimer = invasionTimer;
                 video1.SetActive(false);
                 video2.SetActive(true);
             }

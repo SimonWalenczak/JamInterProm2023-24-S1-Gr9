@@ -44,6 +44,10 @@ public class KeyboardManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCodes[randIndex]))
         {
+            if (GameManager.instance.isFirstScreen)
+            {
+                GameManager.instance.isFirstScreen = false;
+            }
             gameObject.SetActive(!gameObject.activeSelf);
         }
     }
