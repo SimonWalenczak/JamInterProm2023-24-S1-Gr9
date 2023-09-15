@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,17 +20,9 @@ public class Timer : MonoBehaviour
     {
         if (TimerOn)
         {
-            if (TimeLeft > 0)
-            {
-                TimeLeft += Time.deltaTime;
-                updateTimer(TimeLeft);
-            }
-            else
-            {
-                Debug.Log("Time is Up");
-                TimeLeft = 0;
-                TimerOn = false;
-            }
+            TimeLeft += Time.deltaTime;
+            updateTimer(TimeLeft);
+            updateTimer(TimeLeft);
         }
     }
 
@@ -42,7 +33,4 @@ public class Timer : MonoBehaviour
         float secondes = Mathf.Floor(currentTime % 60);
         TimerTxt.text = string.Format("{0:00} : {1:00}", minutes, secondes);
     }
-
-
-
 }

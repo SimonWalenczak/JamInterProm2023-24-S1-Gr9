@@ -1,15 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Random = System.Random;
+using Random = UnityEngine.Random;
 
 public class Switcher : MonoBehaviour
 {
     public bool IsLever;
+    public bool IsOutsideScreen;
     public Sprite LevierSprite1;
     public Sprite LevierSprite2;
+
+    public Sprite LampSprite1;
+    public Sprite LampSprite2;
     private float timerRnd;
 
     public SpriteRenderer _spriteRendererLevier;
@@ -19,51 +24,54 @@ public class Switcher : MonoBehaviour
     public int MaxTimer;
 
     public bool IsRed;
+    public bool IsStarting;
+
 
     void Start()
     {
         if (IsLever)
-            StartCoroutine(DesactivSystem());
+            MakeTimer();
 
         _spriteRendererLevier = GetComponent<SpriteRenderer>();
+    }
+
+    public void MakeTimer()
+    {
+        timerRnd = Random.Range(MinTimer, MaxTimer);
+        IsStarting = true;
+    }
+
+    private void Update()
+    {
+        if (IsStarting && IsLever)
+        {
+            timerRnd -= Time.deltaTime;
+
+            if (timerRnd <= 0)
+            {
+                _spriteRendererLamp.sprite = LampSprite2;
+                IsStarting = false;
+                IsRed = true;
+                GameManager.instance.desactivSystem = true;
+            }
+        }
     }
 
     public void OnMouseDown()
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = LevierSprite2;
-
-        if (IsRed)
-        {
-            _spriteRendererLamp.color = Color.white;
-            GameManager.instance.desactivSystem = false;
-
-            StartCoroutine(DesactivSystem());
-        }
     }
 
     public void OnMouseUp()
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = LevierSprite1;
-        _spriteRendererLevier.color = Color.white;
-    }
 
-    private IEnumerator DesactivSystem()
-    {
-        Random random = new Random();
-        double timerRnd =
-            random.NextDouble() * (MaxTimer * GameManager.instance.TimeMultiplicator -
-                                   MinTimer * GameManager.instance.TimeMultiplicator) +
-            MinTimer * GameManager.instance.TimeMultiplicator;
-
-        timerRnd -= Time.deltaTime;
-
-        if (timerRnd <= 0)
+        if (IsRed)
         {
-            _spriteRendererLamp.color = Color.red;
-            IsRed = true;
-            GameManager.instance.desactivSystem = true;
+            GameManager.instance.desactivSystem = false;
+            IsRed = false;
+            _spriteRendererLamp.sprite = LampSprite1;
+            MakeTimer();
         }
-        
-        yield return null;
     }
 }

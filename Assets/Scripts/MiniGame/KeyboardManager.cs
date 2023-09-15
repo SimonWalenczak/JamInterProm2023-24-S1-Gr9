@@ -7,9 +7,8 @@ public class KeyboardManager : MonoBehaviour
 {
     public TMP_Text KeyboardTouch;
     private List<KeyCode> KeyCodes = new List<KeyCode>();
-    private int randIndex;
+    public int randIndex;
 
-    // Start is called before the first frame update
     void Start()
     {
         KeyCodes.Add((KeyCode)'a');
@@ -37,21 +36,21 @@ public class KeyboardManager : MonoBehaviour
         KeyCodes.Add((KeyCode)'w');
         KeyCodes.Add((KeyCode)'x');
         KeyCodes.Add((KeyCode)'y');
-        KeyCodes.Add((KeyCode)'z');
+        KeyCodes.Add((KeyCode)'z'); 
         ChooseKeyboard();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCodes[randIndex]))
         {
-            gameObject.SetActive(false);
+            gameObject.SetActive(!gameObject.activeSelf);
         }
     }
+    
     public void ChooseKeyboard()
     {
-        randIndex = Random.Range(0,27);
+        randIndex = Random.Range(0,26);
         KeyCode random = KeyCodes[randIndex];
         KeyboardTouch.text = random.ToString().Replace("KeyCode.", "");
     }

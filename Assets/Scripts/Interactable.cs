@@ -11,7 +11,7 @@ public class Interactable : MonoBehaviour
     
     public void ResetScreen()
     {
-        ecran.gameObject.SetActive(true);
+        ecran.gameObject.SetActive(gameObject.activeSelf);
         ecran.MakeTimer();
         IsActive = false;
     }

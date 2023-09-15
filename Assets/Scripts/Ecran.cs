@@ -23,9 +23,12 @@ public class Ecran : MonoBehaviour
     public void MakeTimer()
     {
         Random random = new Random();
-        double _startingTimer = random.NextDouble() * (_maxValue - _minValue) + _minValue;
+        double _startingTimer =
+            random.NextDouble() * (_maxValue * GameManager.instance.TimeMultiplicator2 -
+                                   _minValue * GameManager.instance.TimeMultiplicator2) +
+            _minValue * GameManager.instance.TimeMultiplicator2;
 
-        _actualTimer = (float)_startingTimer;
+        _actualTimer = (float) _startingTimer;
     }
 
     private void Update()
@@ -37,7 +40,7 @@ public class Ecran : MonoBehaviour
             if (_actualTimer <= 0)
             {
                 interactable.IsActive = true;
-                gameObject.SetActive(false);
+                gameObject.SetActive(!gameObject.activeSelf);
             }
         }
     }

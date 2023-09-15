@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
 
     public bool desactivSystem;
 
-    public float TimeMultiplicator;
+    public float TimeMultiplicator1 = 1;
+    public float TimeMultiplicator2 = 1;
+    public float TimeMultiplicator3 = 1;
     
     private void Awake()
     {
