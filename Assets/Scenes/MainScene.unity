@@ -1474,8 +1474,8 @@ MonoBehaviour:
   _minValue: 4
   _maxValue: 6
   ActualTimer: 2
-  video1: {fileID: 873522830}
-  video2: {fileID: 2039779119}
+  video1: {fileID: 2039779119}
+  video2: {fileID: 873522830}
   IsAlien: 0
   screen: {fileID: 594065815}
   BigButton: {fileID: 877911333}
@@ -2672,12 +2672,12 @@ GameObject:
   - component: {fileID: 873522831}
   - component: {fileID: 873522833}
   m_Layer: 0
-  m_Name: AlienScreenNoAlien
+  m_Name: AlienScreenYesAlien
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &873522831
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2738,8 +2738,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873522830}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.005988598, y: -0.042508125, z: 0}
-  m_LocalScale: {x: 5.371864, y: 4.3339853, z: 1}
+  m_LocalPosition: {x: -6.05, y: 1.51, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1820088088}
@@ -3348,14 +3348,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009134448}
-  m_LocalRotation: {x: -0, y: -0, z: 0.112373985, w: -0.993666}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.696362, y: 0.16647321, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.05, y: 1.51, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1820088088}
   m_RootOrder: -2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -12.904}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1026566939
 GameObject:
   m_ObjectHideFlags: 0
@@ -5577,8 +5577,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 873522832}
   - {fileID: 2039779121}
+  - {fileID: 873522832}
   - {fileID: 1009134450}
   - {fileID: 440360783}
   m_Father: {fileID: 0}
@@ -6318,12 +6318,12 @@ GameObject:
   - component: {fileID: 2039779121}
   - component: {fileID: 2039779120}
   m_Layer: 0
-  m_Name: AlienScreenYesAlien
+  m_Name: AlienScreenNoAlien
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &2039779120
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6384,8 +6384,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039779119}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.005988598, y: -0.042508125, z: 0}
-  m_LocalScale: {x: 5.371864, y: 4.3339853, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1820088088}
