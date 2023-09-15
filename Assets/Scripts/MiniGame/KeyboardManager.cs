@@ -61,5 +61,6 @@ public class KeyboardManager : MonoBehaviour
         KeyCode random = KeyCodes[randIndex];
         KeyboardTouch.text = random.ToString().Replace("KeyCode.", "");
         touch.SetActive(true);
+        GetComponent<AudioSource>().Play();
     }
 }

@@ -20,9 +20,12 @@ public class BigButton : MonoBehaviour
         if (GameManager.instance.isFirstScreen == false && canResetScreen)
         {
             canResetScreen = false;
+            GetComponent<AudioSource>().Play();
+
             foreach (var keyboardManager in KeyboardManagers)
             {
                 keyboardManager.gameObject.SetActive(false);
+                keyboardManager.touch.SetActive(false);
             }
         }
     }

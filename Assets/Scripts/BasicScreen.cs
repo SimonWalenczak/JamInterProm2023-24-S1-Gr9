@@ -47,6 +47,7 @@ public class BasicScreen : MonoBehaviour
                     if (GameManager.instance.isFirstScreen == false)
                     {
                         MakeTimer();
+                        GetComponent<AudioSource>().Play();
                         screenBugged.SetActive(true);
                         screenBugged.GetComponent<KeyboardManager>().ChooseKeyboard();
                     }
