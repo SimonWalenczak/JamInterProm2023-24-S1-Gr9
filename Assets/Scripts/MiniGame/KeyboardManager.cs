@@ -11,7 +11,7 @@ public class KeyboardManager : MonoBehaviour
 
     void Start()
     {
-        KeyCodes.Add((KeyCode)'a');
+        //KeyCodes.Add((KeyCode)'a');
         KeyCodes.Add((KeyCode)'b');
         KeyCodes.Add((KeyCode)'c');
         KeyCodes.Add((KeyCode)'d');
@@ -23,20 +23,20 @@ public class KeyboardManager : MonoBehaviour
         KeyCodes.Add((KeyCode)'j');
         KeyCodes.Add((KeyCode)'k');
         KeyCodes.Add((KeyCode)'l');
-        KeyCodes.Add((KeyCode)'m');
+        //KeyCodes.Add((KeyCode)'m');
         KeyCodes.Add((KeyCode)'n');
         KeyCodes.Add((KeyCode)'o');
         KeyCodes.Add((KeyCode)'p');
-        KeyCodes.Add((KeyCode)'q');
+        //KeyCodes.Add((KeyCode)'q');
         KeyCodes.Add((KeyCode)'r');
         KeyCodes.Add((KeyCode)'s');
         KeyCodes.Add((KeyCode)'t');
         KeyCodes.Add((KeyCode)'u');
         KeyCodes.Add((KeyCode)'v');
-        KeyCodes.Add((KeyCode)'w');
+        //KeyCodes.Add((KeyCode)'w');
         KeyCodes.Add((KeyCode)'x');
         KeyCodes.Add((KeyCode)'y');
-        KeyCodes.Add((KeyCode)'z'); 
+        //KeyCodes.Add((KeyCode)'z'); 
         ChooseKeyboard();
     }
 
@@ -54,7 +54,7 @@ public class KeyboardManager : MonoBehaviour
     
     public void ChooseKeyboard()
     {
-        randIndex = Random.Range(0,26);
+        randIndex = Random.Range(0,21);
         KeyCode random = KeyCodes[randIndex];
         KeyboardTouch.text = random.ToString().Replace("KeyCode.", "");
     }
