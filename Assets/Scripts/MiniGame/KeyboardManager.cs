@@ -45,12 +45,8 @@ public class KeyboardManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCodes[randIndex]))
         {
-            if (GameManager.instance.isFirstScreen)
-            {
-                GameManager.instance.isFirstScreen = false;
-            }
-            
             touch.SetActive(false);
+            GetComponentInParent<ScreenObject>().IsBugged = false;
             gameObject.SetActive(!gameObject.activeSelf);
         }
     }
@@ -61,6 +57,5 @@ public class KeyboardManager : MonoBehaviour
         KeyCode random = KeyCodes[randIndex];
         KeyboardTouch.text = random.ToString().Replace("KeyCode.", "");
         touch.SetActive(true);
-        GetComponent<AudioSource>().Play();
     }
 }

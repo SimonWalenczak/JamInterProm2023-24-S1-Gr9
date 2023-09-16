@@ -9,7 +9,7 @@ public class MenuController : MonoBehaviour
     public void Play()
     {
         MenuPanel.SetActive(false);
-        Cursor.visible = true;
+        Cursor.visible = false;
     }
 
     public void Quit()
