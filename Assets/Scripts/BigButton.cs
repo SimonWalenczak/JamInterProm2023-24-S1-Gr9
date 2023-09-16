@@ -5,28 +5,59 @@ using UnityEngine;
 
 public class BigButton : MonoBehaviour
 {
-    public List<KeyboardManager> KeyboardManagers;
-    
-    public bool canResetScreen;
+    public List<Keyboard> Keyboards;
+
+    public bool CanResetScreen;
+
+    public Sprite BigButtonUnarmedSprite;
+    public Sprite BigButtonArmedSprite;
+    public Sprite BigButtonActiveSprite;
+
+    private SpriteRenderer _spriteRenderer;
+    private bool _isUsing;
 
     private void Start()
     {
-        canResetScreen = true;
+        CanResetScreen = true;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    
+
+    private void Update()
+    {
+        if (!CanResetScreen)
+        {
+            _spriteRenderer.sprite = BigButtonUnarmedSprite;
+        }
+        else if (!_isUsing)
+        {
+            _spriteRenderer.sprite = BigButtonArmedSprite;
+        }
+        else
+            _spriteRenderer.sprite = BigButtonActiveSprite;
+    }
 
     private void OnMouseDown()
     {
-        if (GameManager.instance.isFirstScreen == false && canResetScreen)
+        if (CanResetScreen)
         {
-            canResetScreen = false;
+            _isUsing = true;
             GetComponent<AudioSource>().Play();
 
-            foreach (var keyboardManager in KeyboardManagers)
+            foreach (var keyboard in Keyboards)
             {
-                keyboardManager.gameObject.SetActive(false);
-                keyboardManager.touch.SetActive(false);
+                if (!keyboard._wasOn)
+                {
+                    keyboard.keyCodes = KeyboardManager._instance.KeyCodes;
+                }
+
+                keyboard.RestoreSignal();
             }
         }
+    }
+
+    private void OnMouseUp()
+    {
+        CanResetScreen = false;
+        _isUsing = false;
     }
 }

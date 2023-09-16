@@ -49,7 +49,7 @@ public class BasicScreen : MonoBehaviour
                         MakeTimer();
                         GetComponent<AudioSource>().Play();
                         screenBugged.SetActive(true);
-                        screenBugged.GetComponent<KeyboardManager>().ChooseKeyboard();
+                        //screenBugged.GetComponent<KeyboardManager>().ChooseKeyboard();
                     }
                 }
                 else

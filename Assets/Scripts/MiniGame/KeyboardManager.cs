@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,12 +6,21 @@ using TMPro;
 
 public class KeyboardManager : MonoBehaviour
 {
-    public TMP_Text KeyboardTouch;
-    private List<KeyCode> KeyCodes = new List<KeyCode>();
-    public int randIndex;
+    public List<KeyCode> KeyCodes = new List<KeyCode>();
 
-    public GameObject touch;
-    void Start()
+    public static KeyboardManager _instance;
+    private void Awake()
+    {
+        if (_instance == null)
+            _instance = this;
+    }
+
+    private void Start()
+    {
+        SetupKeyCode();
+    }
+
+    public void SetupKeyCode()
     {
         //KeyCodes.Add((KeyCode)'a');
         KeyCodes.Add((KeyCode)'b');
@@ -38,24 +48,5 @@ public class KeyboardManager : MonoBehaviour
         KeyCodes.Add((KeyCode)'x');
         KeyCodes.Add((KeyCode)'y');
         //KeyCodes.Add((KeyCode)'z'); 
-        ChooseKeyboard();
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCodes[randIndex]))
-        {
-            touch.SetActive(false);
-            GetComponentInParent<ScreenObject>().IsBugged = false;
-            gameObject.SetActive(!gameObject.activeSelf);
-        }
-    }
-    
-    public void ChooseKeyboard()
-    {
-        randIndex = Random.Range(0,21);
-        KeyCode random = KeyCodes[randIndex];
-        KeyboardTouch.text = random.ToString().Replace("KeyCode.", "");
-        touch.SetActive(true);
     }
 }

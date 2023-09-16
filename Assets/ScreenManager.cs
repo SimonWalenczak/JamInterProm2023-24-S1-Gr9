@@ -12,6 +12,9 @@ public class ScreenManager : MonoBehaviour
     {
         for (int i = 0; i < Screens.Count; i++)
         {
+            if(Screens[i].GetComponentInChildren<KeyboardManager>() != null)
+                Screens[i].GetComponentInChildren<KeyboardManager>().SetupKeyCode();
+                
             Alarms.Add(Screens[i].GetComponent<Alarm>());
         }
     }
@@ -26,7 +29,6 @@ public class ScreenManager : MonoBehaviour
 
                 if (Alarms[i].ActualTimer <= 0)
                 {
-                    print("0 !");
                     if (Screens[i].ChanceBug())
                     {
                         Screens[i].LaunchBug();

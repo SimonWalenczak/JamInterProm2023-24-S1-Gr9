@@ -10,6 +10,12 @@ public class MenuController : MonoBehaviour
     {
         MenuPanel.SetActive(false);
         Cursor.visible = false;
+        GameManager.instance.canBug = true;
+
+        foreach (var gameSound in GameManager.instance.GameSounds)
+        {
+            gameSound.GetComponent<AudioSource>().Play();
+        }
     }
 
     public void Quit()

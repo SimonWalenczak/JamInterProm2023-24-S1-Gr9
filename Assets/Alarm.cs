@@ -46,12 +46,13 @@ public class Alarm : MonoBehaviour
                 break;
         }
     }
-    
+
     public void MakeTimer()
     {
         Random random = new Random();
         double _startingTimer =
-            random.NextDouble() * (_timeMultiplicator * (_maxTimerValue - _minTimerValue)) + _minTimerValue * _timeMultiplicator;
+            random.NextDouble() * (_timeMultiplicator * (_maxTimerValue - _minTimerValue)) +
+            _minTimerValue * _timeMultiplicator;
 
         ActualTimer = (float) _startingTimer;
     }

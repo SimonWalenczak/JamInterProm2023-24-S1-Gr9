@@ -22,9 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float startTimerMulti3 = 180;
 
     [Space(10)] [Header("First Reduce")] [SerializeField]
-    private float firstReduceMulti1 = 0.1f;
+    private float firstReduceMulti2 = 0.5f;
 
-    [SerializeField] private float firstReduceMulti2 = 0.5f;
     [SerializeField] private float firstReduceMulti3 = 0.5f;
 
     [Space(10)] [Header("Recursive Timer")] [SerializeField]
@@ -55,6 +54,8 @@ public class GameManager : MonoBehaviour
     public bool isFirstScreen;
     public bool canBug;
 
+    public List<GameObject> GameSounds;
+
     private void Awake()
     {
         if (instance == null)
@@ -68,7 +69,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         isFirstScreen = false;
-        canBug = true;
+        canBug = false;
 
         actualTimerMULTI1 = startTimerMulti1;
         actualTimerMULTI2 = startTimerMulti2;
@@ -100,7 +101,7 @@ public class GameManager : MonoBehaviour
                     TimeMultiplicator2 = _maxReduceMulti2;
                 else
                     TimeMultiplicator2 -= otherReduceMulti2;
-                
+
                 actualTimerMULTI2 = RepeatTimerMulti2;
             }
         }
@@ -121,7 +122,7 @@ public class GameManager : MonoBehaviour
                     TimeMultiplicator3 = _maxReduceMulti3;
                 else
                     TimeMultiplicator3 -= otherReduceMulti3;
-                
+
                 actualTimerMULTI3 = RepeatTimerMulti3;
             }
         }

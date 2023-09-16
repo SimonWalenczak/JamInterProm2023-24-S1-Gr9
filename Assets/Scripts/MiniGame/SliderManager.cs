@@ -19,7 +19,7 @@ public class SliderManager : MonoBehaviour
     public List<Slider> Sliders;
 
     private int nbSucces;
-    private bool isLaunching;
+   
     
     public void StartChallenge()
     {
@@ -61,7 +61,6 @@ public class SliderManager : MonoBehaviour
 
         if (nbSucces == 3)
         {
-            isLaunching = false;
             StartChallenge();
             interactable.ResetScreen();
         }

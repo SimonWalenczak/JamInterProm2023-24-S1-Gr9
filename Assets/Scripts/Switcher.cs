@@ -6,73 +6,83 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
+public enum TypeOfSwitcher
+{
+    Lever,
+    MusicButton
+}
+
 public class Switcher : MonoBehaviour
 {
-    public bool IsLever;
-    public bool IsOutsideScreen;
-    public Sprite LevierSprite1;
-    public Sprite LevierSprite2;
+    public TypeOfSwitcher SwitcherType;
 
-    public Sprite LampSprite1;
-    public Sprite LampSprite2;
+    [Space(10)] public List<Sprite> LeverSprites;
+
+    [Space(10)] public List<Sprite> MusicButtonSprites;
+
+    [Space(10)] public List<Sprite> ActualSprites;
+
+    [Space(20)] private bool IsLever;
+    private bool IsMusicButton;
+
     private float timerRnd;
 
-    public SpriteRenderer _spriteRendererLevier;
-    public SpriteRenderer _spriteRendererLamp;
+    private SpriteRenderer _spriteRenderer;
 
-    public int MinTimer;
-    public int MaxTimer;
 
+    [HideInInspector] public bool _isUsing;
     public bool IsRed;
-    public bool IsStarting;
 
+    private AudioSource _audioSource;
 
     void Start()
     {
-        if (IsLever)
-            MakeTimer();
-
-        _spriteRendererLevier = GetComponent<SpriteRenderer>();
-    }
-
-    public void MakeTimer()
-    {
-        timerRnd = Random.Range(MinTimer, MaxTimer);
-        IsStarting = true;
-    }
-
-    private void Update()
-    {
-        if (IsStarting && IsLever)
+        switch (SwitcherType)
         {
-            timerRnd -= Time.deltaTime;
-
-            if (timerRnd <= 0)
-            {
-                _spriteRendererLamp.sprite = LampSprite2;
-                IsStarting = false;
-                IsRed = true;
-                GameManager.instance.desactivSystem = true;
-            }
+            case TypeOfSwitcher.Lever:
+                ActualSprites = LeverSprites;
+                IsLever = true;
+                break;
+            case TypeOfSwitcher.MusicButton:
+                ActualSprites = MusicButtonSprites;
+                IsMusicButton = true;
+                break;
         }
+
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void OnMouseDown()
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = LevierSprite2;
-        GetComponent<AudioSource>().Play();
+        if (GameManager.instance.canBug)
+        {
+            _spriteRenderer.sprite = ActualSprites[0];
+            
+            if (IsMusicButton && GameManager.instance.desactivSystem)
+                return;
+
+            _isUsing = true;
+            
+            if (IsLever)
+                _audioSource.Play();
+            else if (IsMusicButton && GetComponent<Screen8Manager>().IsAlien )
+            {
+                GetComponent<Screen8Manager>().IsAlien = false;
+                _audioSource.Play();
+            }
+        }
     }
 
     public void OnMouseUp()
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = LevierSprite1;
+        _isUsing = false;
+        _spriteRenderer.sprite = ActualSprites[1];
 
         if (IsRed)
         {
             GameManager.instance.desactivSystem = false;
             IsRed = false;
-            _spriteRendererLamp.sprite = LampSprite1;
-            MakeTimer();
         }
     }
 }
