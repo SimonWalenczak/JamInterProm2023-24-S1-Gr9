@@ -60,7 +60,7 @@ public class Arm : MonoBehaviour
             {
                 lerpSpeed = 2;
 
-                if (Input.mousePosition.x < Screen.width * 0.60f)
+                if (Input.mousePosition.x < Screen.width * 0.20f)
                 {
                     _targetPosition = new Vector3(mousePosition.x + offsetX, mousePosition.y + offsetY,
                         transform.position.z);
@@ -92,7 +92,7 @@ public class Arm : MonoBehaviour
             {
                 lerpSpeed = 2;
 
-                if (Input.mousePosition.x > Screen.width * 0.40f)
+                if (Input.mousePosition.x > Screen.width * 0.80f)
                 {
                     _targetPosition = new Vector3(mousePosition.x + offsetX, mousePosition.y + offsetY,
                         transform.position.z);
