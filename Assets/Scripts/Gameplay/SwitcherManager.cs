@@ -6,6 +6,7 @@ using UnityEngine;
 [Serializable]
 public class SpriteListContainer
 {
+    public string _name;
     public List<Sprite> spriteList = new List<Sprite>();
 }
 
