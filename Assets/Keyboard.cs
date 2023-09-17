@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Keyboard : MonoBehaviour
 {
-    public TMP_Text KeyboardTouch;
     public List<KeyCode> keyCodes = new List<KeyCode>();
     public int randIndex;
 
     public GameObject touch;
+    public TMP_Text KeyboardTouch;
     
     [HideInInspector] public bool _wasOn;
     

@@ -468,10 +468,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2da6f0c96feb240a33aca6bb2893a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KeyboardTouch: {fileID: 1831648609}
   keyCodes: 
   randIndex: 0
   touch: {fileID: 680341961}
+  KeyboardTouch: {fileID: 1831648609}
   _wasOn: 0
 --- !u!1 &92730370
 GameObject:
@@ -3241,10 +3241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2da6f0c96feb240a33aca6bb2893a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KeyboardTouch: {fileID: 1293131190}
   keyCodes: 
   randIndex: 0
   touch: {fileID: 2139576055}
+  KeyboardTouch: {fileID: 1293131190}
   _wasOn: 0
 --- !u!1 &611667028
 GameObject:
@@ -3365,10 +3365,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2da6f0c96feb240a33aca6bb2893a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KeyboardTouch: {fileID: 1749808929}
   keyCodes: 
   randIndex: 0
   touch: {fileID: 142588290}
+  KeyboardTouch: {fileID: 1749808929}
   _wasOn: 0
 --- !u!1 &612686786
 GameObject:
@@ -3633,8 +3633,8 @@ MonoBehaviour:
   _sprites:
   - {fileID: 21300000, guid: e436916e04e5c09498ff8bf1713bb2d5, type: 3}
   - {fileID: 21300000, guid: 6d77dad7b2311c149a747fd5d6b35f44, type: 3}
-  MinTimer: 1
-  MaxTimer: 2
+  MinTimer: 4
+  MaxTimer: 12
 --- !u!1 &680341961
 GameObject:
   m_ObjectHideFlags: 0
@@ -3806,6 +3806,8 @@ MonoBehaviour:
   LeftArm: 0
   _leftOrigin: {x: -4.12, y: -6.28, z: 0}
   _rightOrigin: {x: 3.85, y: -6.26, z: 0}
+  IsActualArm: 0
+  otherArm: {fileID: 2088118775}
 --- !u!1 &755848099
 GameObject:
   m_ObjectHideFlags: 0
@@ -5050,10 +5052,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2da6f0c96feb240a33aca6bb2893a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KeyboardTouch: {fileID: 563686264}
   keyCodes: 
   randIndex: 0
   touch: {fileID: 936265030}
+  KeyboardTouch: {fileID: 563686264}
   _wasOn: 0
 --- !u!1 &975257801
 GameObject:
@@ -9538,6 +9540,8 @@ MonoBehaviour:
   LeftArm: 1
   _leftOrigin: {x: -4.12, y: -6.28, z: 0}
   _rightOrigin: {x: 3.85, y: -6.26, z: 0}
+  IsActualArm: 0
+  otherArm: {fileID: 706823654}
 --- !u!1 &2088488136
 GameObject:
   m_ObjectHideFlags: 0
@@ -9691,10 +9695,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2da6f0c96feb240a33aca6bb2893a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KeyboardTouch: {fileID: 288262827}
   keyCodes: 
   randIndex: 0
   touch: {fileID: 92730370}
+  KeyboardTouch: {fileID: 288262827}
   _wasOn: 0
 --- !u!1 &2139576055
 GameObject:

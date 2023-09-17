@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Arm : MonoBehaviour
 {
     public Camera cam;
@@ -13,17 +14,27 @@ public class Arm : MonoBehaviour
 
     private Vector3 _targetPosition;
 
-    [Space(10)]
-    [SerializeField] private bool LeftArm;
+    [Space(10)] [SerializeField] private bool LeftArm;
     [SerializeField] private Vector3 _leftOrigin;
     [SerializeField] private Vector3 _rightOrigin;
 
+    public bool IsActualArm;
+
+    public Arm otherArm;
+    
     private void Start()
     {
         if (!LeftArm)
         {
             offsetX = -offsetX;
+            IsActualArm = true;
+            _leftOrigin.x = Screen.width * 0.3f;
         }
+        else
+        {
+            _rightOrigin.x = Screen.width * 0.7f;
+        }
+        
     }
 
     void Update()
@@ -32,16 +43,31 @@ public class Arm : MonoBehaviour
 
         if (LeftArm)
         {
-            _targetPosition = mousePosition.x < 0
-                ? new Vector3(mousePosition.x + offsetX, mousePosition.y + offsetY,
-                    transform.position.z)
-                : _leftOrigin;
+            if (IsActualArm && Input.mousePosition.x < Screen.width * 0.75f)
+            {
+                _targetPosition = new Vector3(mousePosition.x + offsetX, mousePosition.y + offsetY,
+                    transform.position.z);
+            }
+            else
+            {
+                _targetPosition = _leftOrigin;
+                IsActualArm = false;
+                otherArm.IsActualArm = true;
+            }
         }
         else
         {
-            _targetPosition = mousePosition.x > 0
-                ? new Vector3(mousePosition.x + offsetX, mousePosition.y + offsetY, transform.position.z)
-                : _rightOrigin;
+            if (IsActualArm && Input.mousePosition.x > Screen.width * 0.25f)
+            {
+                _targetPosition = new Vector3(mousePosition.x + offsetX, mousePosition.y + offsetY,
+                    transform.position.z);
+            }
+            else
+            {
+                _targetPosition = _rightOrigin;
+                IsActualArm = false;
+                otherArm.IsActualArm = true;
+            }
         }
 
         transform.position = Vector3.Lerp(transform.position, _targetPosition, lerpSpeed * Time.deltaTime);
