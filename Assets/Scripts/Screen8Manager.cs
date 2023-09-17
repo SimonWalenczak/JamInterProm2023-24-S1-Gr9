@@ -46,14 +46,11 @@ public class Screen8Manager : MonoBehaviour
         }
     }
 
-    public void OnMouseDown()
+    public void KillAliens()
     {
-        if (BuggedScreen.activeSelf == false && GameManager.instance.desactivSystem == false)
-        {
-            video1.SetActive(true);
-            video2.SetActive(false);
-            IsAlien = false;
-            BigButton.CanResetScreen = true;
-        }
+        video1.SetActive(true);
+        video2.SetActive(false);
+        IsAlien = false;
+        BigButton.CanResetScreen = true;
     }
 }

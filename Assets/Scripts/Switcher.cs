@@ -16,11 +16,7 @@ public class Switcher : MonoBehaviour
 {
     public TypeOfSwitcher SwitcherType;
 
-    [Space(10)] public List<Sprite> LeverSprites;
-
-    [Space(10)] public List<Sprite> MusicButtonSprites;
-
-    [Space(10)] public List<Sprite> ActualSprites;
+    [Space(10)] public List<Sprite> SpritesList;
 
     [Space(20)] private bool IsLever;
     private bool IsMusicButton;
@@ -40,11 +36,11 @@ public class Switcher : MonoBehaviour
         switch (SwitcherType)
         {
             case TypeOfSwitcher.Lever:
-                ActualSprites = LeverSprites;
+                SpritesList = SwitcherManager._instance.listOfListsOfSprites[0].spriteList;
                 IsLever = true;
                 break;
             case TypeOfSwitcher.MusicButton:
-                ActualSprites = MusicButtonSprites;
+                SpritesList = SwitcherManager._instance.listOfListsOfSprites[1].spriteList;
                 IsMusicButton = true;
                 break;
         }
@@ -57,19 +53,21 @@ public class Switcher : MonoBehaviour
     {
         if (GameManager.instance.canBug)
         {
-            _spriteRenderer.sprite = ActualSprites[0];
-            
+            _spriteRenderer.sprite = SpritesList[0];
+
             if (IsMusicButton && GameManager.instance.desactivSystem)
                 return;
 
             _isUsing = true;
-            
+
             if (IsLever)
                 _audioSource.Play();
-            else if (IsMusicButton && GetComponent<Screen8Manager>().IsAlien )
+            else if (IsMusicButton && GetComponent<Screen8Manager>().IsAlien &&
+                     GetComponent<Screen8Manager>().BuggedScreen.activeSelf == false &&
+                     GameManager.instance.desactivSystem == false)
             {
-                GetComponent<Screen8Manager>().IsAlien = false;
                 _audioSource.Play();
+                GetComponent<Screen8Manager>().KillAliens();
             }
         }
     }
@@ -77,7 +75,7 @@ public class Switcher : MonoBehaviour
     public void OnMouseUp()
     {
         _isUsing = false;
-        _spriteRenderer.sprite = ActualSprites[1];
+        _spriteRenderer.sprite = SpritesList[1];
 
         if (IsRed)
         {

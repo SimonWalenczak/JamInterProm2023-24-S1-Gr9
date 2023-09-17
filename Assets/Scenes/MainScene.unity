@@ -581,11 +581,11 @@ Transform:
   - {fileID: 1639563}
   - {fileID: 364847977}
   - {fileID: 1822450277}
+  - {fileID: 1291187915}
   - {fileID: 1990130888}
   - {fileID: 877911331}
   - {fileID: 1368120501}
   - {fileID: 1973082043}
-  - {fileID: 1291187915}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &100830657
@@ -1950,13 +1950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SwitcherType: 1
-  LeverSprites:
-  - {fileID: 21300000, guid: 62500a5599b0a3a4c8daa0f3a9b2bb22, type: 3}
-  - {fileID: 21300000, guid: 75d3549440b131a4fa82dc19433bf168, type: 3}
-  MusicButtonSprites:
-  - {fileID: 21300000, guid: 804b65a7aac21654da3cf047181ec4db, type: 3}
-  - {fileID: 21300000, guid: 4548bbed965c0b848baabb6c1395af08, type: 3}
-  ActualSprites: []
+  SpritesList: []
   _isUsing: 0
   IsRed: 0
 --- !u!60 &440360786
@@ -6404,6 +6398,7 @@ GameObject:
   - component: {fileID: 1314716868}
   - component: {fileID: 1314716869}
   - component: {fileID: 1314716870}
+  - component: {fileID: 1314716871}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6502,6 +6497,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KeyCodes: 
+--- !u!114 &1314716871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314716865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 939bce4bfbe681e43b03a416f930508a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfListsOfSprites:
+  - spriteList:
+    - {fileID: 21300000, guid: 75d3549440b131a4fa82dc19433bf168, type: 3}
+    - {fileID: 21300000, guid: 62500a5599b0a3a4c8daa0f3a9b2bb22, type: 3}
+  - spriteList:
+    - {fileID: 21300000, guid: 804b65a7aac21654da3cf047181ec4db, type: 3}
+    - {fileID: 21300000, guid: 4548bbed965c0b848baabb6c1395af08, type: 3}
 --- !u!1 &1368120500
 GameObject:
   m_ObjectHideFlags: 0
@@ -9040,13 +9054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SwitcherType: 0
-  LeverSprites:
-  - {fileID: 21300000, guid: 75d3549440b131a4fa82dc19433bf168, type: 3}
-  - {fileID: 21300000, guid: 62500a5599b0a3a4c8daa0f3a9b2bb22, type: 3}
-  MusicButtonSprites:
-  - {fileID: 21300000, guid: 4548bbed965c0b848baabb6c1395af08, type: 3}
-  - {fileID: 21300000, guid: 804b65a7aac21654da3cf047181ec4db, type: 3}
-  ActualSprites: []
+  SpritesList: []
   _isUsing: 0
   IsRed: 0
 --- !u!60 &2040627824
