@@ -508,8 +508,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 265, y: -38}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 247, y: -30}
+  m_SizeDelta: {x: 88.61, y: 88.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &92730372
 MonoBehaviour:
@@ -3664,7 +3664,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 476.8, y: 368}
+  m_AnchoredPosition: {x: 464.2, y: 366.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &680341963
@@ -3802,6 +3802,7 @@ MonoBehaviour:
   _rightOrigin: {x: 3.85, y: -6.26, z: 0}
   IsActualArm: 0
   otherArm: {fileID: 2088118775}
+  LimitY: 0.1
 --- !u!1 &755848099
 GameObject:
   m_ObjectHideFlags: 0
@@ -6469,7 +6470,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeLeft: 0
-  TimerOn: 0
   TimerTxt: {fileID: 758186403}
 --- !u!114 &1314716869
 MonoBehaviour:
@@ -9544,12 +9544,13 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   offsetX: 0.95
   offsetY: -3.3
-  lerpSpeed: 10
+  lerpSpeed: 20
   LeftArm: 1
   _leftOrigin: {x: -4.12, y: -6.28, z: 0}
   _rightOrigin: {x: 3.85, y: -6.26, z: 0}
   IsActualArm: 0
   otherArm: {fileID: 706823654}
+  LimitY: 0.1
 --- !u!1 &2088488136
 GameObject:
   m_ObjectHideFlags: 0
@@ -9743,7 +9744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 303, y: 115.5}
+  m_AnchoredPosition: {x: 293.6, y: 116.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2139576057

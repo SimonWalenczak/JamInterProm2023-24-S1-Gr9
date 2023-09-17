@@ -22,6 +22,10 @@ public class Arm : MonoBehaviour
 
     public Arm otherArm;
 
+    [SerializeField] private float LimitY;
+
+    private float actualMousePosY;
+    
     private void Start()
     {
         if (!LeftArm)
@@ -39,15 +43,23 @@ public class Arm : MonoBehaviour
     void Update()
     {
         Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        if (mousePosition.y > 2.5f)
+        {
+            actualMousePosY = 2.5f;
+        }
+        else
+        {
+            actualMousePosY = mousePosition.y;
+        }
+        
         if (LeftArm)
         {
             if (IsActualArm)
             {
-                lerpSpeed = 10;
-
                 if (Input.mousePosition.x <= Screen.width * 0.75f)
                 {
-                    _targetPosition = new Vector3(mousePosition.x + offsetX, mousePosition.y + offsetY,
+                    _targetPosition = new Vector3(mousePosition.x + offsetX, actualMousePosY + offsetY,
                         transform.position.z);
                 }
                 else
@@ -58,11 +70,9 @@ public class Arm : MonoBehaviour
             }
             else
             {
-                lerpSpeed = 2;
-
-                if (Input.mousePosition.x < Screen.width * 0.20f)
+                if (Input.mousePosition.x < Screen.width * 0.01f)
                 {
-                    _targetPosition = new Vector3(mousePosition.x + offsetX, mousePosition.y + offsetY,
+                    _targetPosition = new Vector3(mousePosition.x + offsetX, actualMousePosY + offsetY,
                         transform.position.z);
                 }
                 else
@@ -75,11 +85,9 @@ public class Arm : MonoBehaviour
         {
             if (IsActualArm)
             {
-                lerpSpeed = 10;
-
                 if (Input.mousePosition.x >= Screen.width * 0.25f)
                 {
-                    _targetPosition = new Vector3(mousePosition.x + offsetX, mousePosition.y + offsetY,
+                    _targetPosition = new Vector3(mousePosition.x + offsetX, actualMousePosY + offsetY,
                         transform.position.z);
                 }
                 else
@@ -90,11 +98,9 @@ public class Arm : MonoBehaviour
             }
             else
             {
-                lerpSpeed = 2;
-
-                if (Input.mousePosition.x > Screen.width * 0.80f)
+                if (Input.mousePosition.x > Screen.width * 1)
                 {
-                    _targetPosition = new Vector3(mousePosition.x + offsetX, mousePosition.y + offsetY,
+                    _targetPosition = new Vector3(mousePosition.x + offsetX, actualMousePosY + offsetY,
                         transform.position.z);
                 }
                 else
