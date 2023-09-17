@@ -16,12 +16,11 @@ public class Timer : MonoBehaviour
         if (GameManager.instance.canBug)
         {
             TimeLeft += Time.deltaTime;
-            updateTimer(TimeLeft);
-            updateTimer(TimeLeft);
+            UpdateTimer(TimeLeft);
         }
     }
 
-    void updateTimer(float currentTime)
+    void UpdateTimer(float currentTime)
     {
         currentTime += 1;
         float minutes = Mathf.Floor(currentTime / 60);

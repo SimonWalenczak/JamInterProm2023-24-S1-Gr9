@@ -38,11 +38,13 @@ public class ScreenObject : MonoBehaviour
         _audioSource.clip = Clips[clipToPlay];
         _audioSource.Play();
         ScreenBugged.SetActive(true);
-        
+
         if (ScreenBugged.GetComponent<Keyboard>() != null)
+        {
             if (!ScreenBugged.GetComponent<Keyboard>()._wasOn)
                 ScreenBugged.GetComponent<Keyboard>().keyCodes = KeyboardManager._instance.KeyCodes;
 
-        ScreenBugged.GetComponent<Keyboard>().ChooseKeyboard();
+            ScreenBugged.GetComponent<Keyboard>().ChooseKeyboard();
+        }
     }
 }

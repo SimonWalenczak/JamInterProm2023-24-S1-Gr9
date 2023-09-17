@@ -10,9 +10,9 @@ public class Keyboard : MonoBehaviour
 
     public GameObject touch;
     public TMP_Text KeyboardTouch;
-    
+
     [HideInInspector] public bool _wasOn;
-    
+
     void Update()
     {
         if (Input.GetKeyDown(keyCodes[randIndex]))
@@ -23,14 +23,18 @@ public class Keyboard : MonoBehaviour
 
     public void RestoreSignal()
     {
-        touch.SetActive(false);
+        if (GetComponent<Keyboard>() != null)
+        {
+            touch.SetActive(false);
+        }
+
         GetComponentInParent<ScreenObject>().IsBugged = false;
         gameObject.SetActive(false);
     }
-    
+
     public void ChooseKeyboard()
     {
-        randIndex = Random.Range(0,21);
+        randIndex = Random.Range(0, 21);
         print(randIndex);
         KeyCode random = keyCodes[randIndex];
         KeyboardTouch.text = random.ToString().Replace("KeyCode.", "");
