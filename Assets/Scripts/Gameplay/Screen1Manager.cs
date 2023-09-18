@@ -17,7 +17,12 @@ public class Screen1Manager : MonoBehaviour
     public static Screen1Manager Instance;
 
     public ScreenObject Screen1;
-    
+
+    private SpriteRenderer _spriteRenderer;
+    private Color _color;
+        
+    [SerializeField] private int difference;
+
     private void Awake()
     {
         if (Instance == null)
@@ -28,6 +33,9 @@ public class Screen1Manager : MonoBehaviour
 
     private void Start()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _color = _spriteRenderer.color;
+
         ActualValue = StartValue;
     }
 
@@ -36,18 +44,34 @@ public class Screen1Manager : MonoBehaviour
         if (ActualValue > MaxValue)
         {
             ActualValue = MaxValue;
-            if(ActualValue == TargetValue)
+            if (ActualValue == TargetValue)
                 ResetScreen();
         }
 
         if (ActualValue < MinValue)
         {
             ActualValue = MinValue;
-            if(ActualValue == TargetValue)
+            if (ActualValue == TargetValue)
                 ResetScreen();
         }
     }
-    
+
+    public void CalculateDiff(int currentValue)
+    {
+        difference = Mathf.Abs(TargetValue - currentValue);
+        
+        if (difference >= 3)
+        {
+            _color.a = 1;
+        }
+        else if (difference < 3 && difference >= 0)
+        {
+            _color.a = 0.5f;
+        }
+
+        _spriteRenderer.color = _color;
+    }
+
     public void ResetScreen()
     {
         Screen1.IsBugged = false;
@@ -57,12 +81,12 @@ public class Screen1Manager : MonoBehaviour
     public void ChooseFrequency()
     {
         Random rnd = new Random();
-        
+
         TargetValue = rnd.Next(MinValue, MaxValue);
-        
+
         print("TargetValue : " + TargetValue);
-        
-        if(TargetValue == ActualValue)
+
+        if (TargetValue == ActualValue)
             ChooseFrequency();
     }
 }

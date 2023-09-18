@@ -11,9 +11,16 @@ public class testSliderReset : Slider
         Slider = GetComponent<Slider>();
     }
 
+    public override void OnDrag (PointerEventData eventData)
+    {
+        base.OnDrag(eventData);
+
+        Screen1Manager.Instance.CalculateDiff((int)Slider.value);
+    }
+    
     public override void OnPointerUp(PointerEventData eventData)
     {
-        base.OnPointerDown(eventData);
+        base.OnPointerUp(eventData);
 
         Screen1Manager.Instance.ActualValue += (int)Slider.value;
 
