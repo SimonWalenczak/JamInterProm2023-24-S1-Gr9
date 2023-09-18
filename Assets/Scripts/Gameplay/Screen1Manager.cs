@@ -59,15 +59,13 @@ public class Screen1Manager : MonoBehaviour
     public void CalculateDiff(int currentValue)
     {
         difference = Mathf.Abs(TargetValue - currentValue);
+
+        if (difference > 10)
+            difference = 10;
+        else if(difference < -10)
+            difference = -10;
         
-        if (difference >= 3)
-        {
-            _color.a = 1;
-        }
-        else if (difference < 3 && difference >= 0)
-        {
-            _color.a = 0.5f;
-        }
+        _color.a = 0.1f * difference;
 
         _spriteRenderer.color = _color;
     }
