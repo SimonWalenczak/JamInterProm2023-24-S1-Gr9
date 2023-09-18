@@ -46,5 +46,10 @@ public class ScreenObject : MonoBehaviour
 
             ScreenBugged.GetComponent<Keyboard>().ChooseKeyboard();
         }
+
+        if (ScreenBugged.GetComponent<Screen1Manager>() != null)
+        {
+            ScreenBugged.GetComponent<Screen1Manager>().ChooseFrequency();
+        }
     }
 }

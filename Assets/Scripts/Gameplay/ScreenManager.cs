@@ -6,7 +6,7 @@ using UnityEngine;
 public class ScreenManager : MonoBehaviour
 {
     public List<ScreenObject> Screens;
-    public List<Alarm> Alarms;
+    [HideInInspector] public List<Alarm> Alarms;
 
     private void Start()
     {

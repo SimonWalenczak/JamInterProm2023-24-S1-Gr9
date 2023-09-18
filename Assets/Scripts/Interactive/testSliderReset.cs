@@ -1,24 +1,22 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class testSliderReset : Slider
 {
-    private Slider slider;
+    public Slider Slider;
 
     protected override void Start()
     {
-        slider = GetComponent<Slider>();
+        Slider = GetComponent<Slider>();
     }
 
     public override void OnPointerUp(PointerEventData eventData)
     {
         base.OnPointerDown(eventData);
 
-        slider.value = 0;
+        Screen1Manager.Instance.ActualValue += (int)Slider.value;
+
+        Slider.value = 0;
     }
 }
