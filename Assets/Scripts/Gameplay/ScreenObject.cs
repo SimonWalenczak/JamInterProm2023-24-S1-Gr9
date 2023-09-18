@@ -39,6 +39,11 @@ public class ScreenObject : MonoBehaviour
         _audioSource.Play();
         ScreenBugged.SetActive(true);
 
+        if (ScreenBugged.GetComponent<Screen1Manager>() != null)
+        {
+            ScreenBugged.GetComponent<Screen1Manager>().ChooseFrequency();
+        }
+        
         if (ScreenBugged.GetComponent<Keyboard>() != null)
         {
             if (!ScreenBugged.GetComponent<Keyboard>()._wasOn)
@@ -47,9 +52,6 @@ public class ScreenObject : MonoBehaviour
             ScreenBugged.GetComponent<Keyboard>().ChooseKeyboard();
         }
 
-        if (ScreenBugged.GetComponent<Screen1Manager>() != null)
-        {
-            ScreenBugged.GetComponent<Screen1Manager>().ChooseFrequency();
-        }
+
     }
 }

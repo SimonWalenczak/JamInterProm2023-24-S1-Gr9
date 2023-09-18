@@ -18,5 +18,8 @@ public class testSliderReset : Slider
         Screen1Manager.Instance.ActualValue += (int)Slider.value;
 
         Slider.value = 0;
+        
+        if(Screen1Manager.Instance.TargetValue == Screen1Manager.Instance.ActualValue)
+            Screen1Manager.Instance.ResetScreen();
     }
 }

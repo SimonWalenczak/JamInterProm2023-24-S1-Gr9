@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Random = UnityEngine.Random;
+using Random = System.Random;
 
 public class Screen1Manager : MonoBehaviour
 {
+    public int StartValue;
     public int TargetValue;
     public int ActualValue;
 
@@ -14,9 +15,8 @@ public class Screen1Manager : MonoBehaviour
     public int MaxValue;
 
     public static Screen1Manager Instance;
-    
-    
-    public GameObject buggedScreen1;
+
+    public ScreenObject Screen1;
     
     private void Awake()
     {
@@ -28,31 +28,41 @@ public class Screen1Manager : MonoBehaviour
 
     private void Start()
     {
-        ActualValue = 0;
+        ActualValue = StartValue;
     }
 
     private void Update()
     {
-        if (ActualValue >= MaxValue)
-            ActualValue = MaxValue;
-        if (ActualValue <= MinValue)
-            ActualValue = MinValue;
-
-        /*if (ActualValue == TargetValue)
+        if (ActualValue > MaxValue)
         {
-            ResetScreen();
-        }*/
-        print(ActualValue);
+            ActualValue = MaxValue;
+            if(ActualValue == TargetValue)
+                ResetScreen();
+        }
+
+        if (ActualValue < MinValue)
+        {
+            ActualValue = MinValue;
+            if(ActualValue == TargetValue)
+                ResetScreen();
+        }
     }
     
     public void ResetScreen()
     {
-        print("screen 1 reset");
-        buggedScreen1.SetActive(false);
+        Screen1.IsBugged = false;
+        gameObject.SetActive(false);
     }
 
     public void ChooseFrequency()
     {
-        TargetValue = Random.Range(MinValue, MaxValue);
+        Random rnd = new Random();
+        
+        TargetValue = rnd.Next(MinValue, MaxValue);
+        
+        print("TargetValue : " + TargetValue);
+        
+        if(TargetValue == ActualValue)
+            ChooseFrequency();
     }
 }

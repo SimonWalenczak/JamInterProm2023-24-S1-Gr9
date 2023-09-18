@@ -35,7 +35,6 @@ public class Keyboard : MonoBehaviour
     public void ChooseKeyboard()
     {
         randIndex = Random.Range(0, 21);
-        print(randIndex);
         KeyCode random = keyCodes[randIndex];
         KeyboardTouch.text = random.ToString().Replace("KeyCode.", "");
         touch.SetActive(true);
