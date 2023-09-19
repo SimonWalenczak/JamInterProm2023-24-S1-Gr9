@@ -20,8 +20,16 @@ public class Screen1Manager : MonoBehaviour
 
     private SpriteRenderer _spriteRenderer;
     private Color _color;
-        
+
+    private bool _wasOn;
+
+    public bool _canRefresh;
+
     [SerializeField] private int difference;
+
+    private int lastValue;
+    Quaternion targetRotation;
+    public Transform spriteRoulette;
 
     private void Awake()
     {
@@ -35,12 +43,23 @@ public class Screen1Manager : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _color = _spriteRenderer.color;
-
-        ActualValue = StartValue;
+        lastValue = ActualValue;
     }
 
     private void Update()
     {
+        if (lastValue != ActualValue)
+        {
+            if (lastValue < ActualValue)
+                targetRotation = Quaternion.Euler(0, 0, spriteRoulette.transform.rotation.eulerAngles.z - 10);
+            else
+                targetRotation = Quaternion.Euler(0, 0, spriteRoulette.transform.rotation.eulerAngles.z + 10);
+
+            lastValue = ActualValue;
+            spriteRoulette.transform.rotation = targetRotation;
+            spriteRoulette.gameObject.GetComponent<AudioSource>().Play();
+        }
+        
         if (ActualValue > MaxValue)
         {
             ActualValue = MaxValue;
@@ -54,17 +73,18 @@ public class Screen1Manager : MonoBehaviour
             if (ActualValue == TargetValue)
                 ResetScreen();
         }
+
+        if (_canRefresh && ActualValue == TargetValue)
+            ResetScreen();
     }
 
-    public void CalculateDiff(int currentValue)
+    public void CalculateDiff()
     {
-        difference = Mathf.Abs(TargetValue - currentValue);
+        difference = Mathf.Abs(TargetValue - ActualValue);
 
         if (difference > 10)
             difference = 10;
-        else if(difference < -10)
-            difference = -10;
-        
+
         _color.a = 0.1f * difference;
 
         _spriteRenderer.color = _color;
@@ -78,6 +98,14 @@ public class Screen1Manager : MonoBehaviour
 
     public void ChooseFrequency()
     {
+        if (!_wasOn)
+        {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _color = _spriteRenderer.color;
+            ActualValue = StartValue;
+            _wasOn = true;
+        }
+
         Random rnd = new Random();
 
         TargetValue = rnd.Next(MinValue, MaxValue);
@@ -86,5 +114,7 @@ public class Screen1Manager : MonoBehaviour
 
         if (TargetValue == ActualValue)
             ChooseFrequency();
+
+        CalculateDiff();
     }
 }
