@@ -23,7 +23,7 @@ public class ScreenManager : MonoBehaviour
     {
         for (int i = 0; i < Alarms.Count; i++)
         {
-            if (GameManager.instance.canBug && !Screens[i].IsBugged)
+            if (GameManager.instance.canBug && !Screens[i].IsBugged && !Screens[i].IsBroken)
             {
                 Alarms[i].ActualTimer -= Time.deltaTime;
 

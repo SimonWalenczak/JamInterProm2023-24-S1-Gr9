@@ -10,7 +10,8 @@ public class ScreenObject : MonoBehaviour
     [SerializeField] private int minChanceValue;
     [SerializeField] private int maxChanceValue;
 
-    [Space(10)] [Header("Bugged Screen")] public bool IsBugged;
+    [Space(10)] [Header("Bugged Screen")] public bool IsBroken;
+    public bool IsBugged;
     public GameObject ScreenBugged;
 
     [Space(10)] [Header("Audio")] [HideInInspector]
@@ -18,6 +19,9 @@ public class ScreenObject : MonoBehaviour
 
     public int clipToPlay;
     public List<AudioClip> Clips;
+
+    public float _startBuggedTimer;
+    private float buggedTimer;
 
     private void Start()
     {
@@ -43,7 +47,7 @@ public class ScreenObject : MonoBehaviour
         {
             ScreenBugged.GetComponent<Screen1Manager>().ChooseFrequency();
         }
-        
+
         if (ScreenBugged.GetComponent<Keyboard>() != null)
         {
             if (!ScreenBugged.GetComponent<Keyboard>()._wasOn)
@@ -51,7 +55,18 @@ public class ScreenObject : MonoBehaviour
 
             ScreenBugged.GetComponent<Keyboard>().ChooseKeyboard();
         }
+    }
+    
+    private void Update()
+    {
+        if (IsBugged)
+        {
+            buggedTimer -= Time.deltaTime;
 
-
+            if (buggedTimer <= 0)
+            {
+                buggedTimer = _startBuggedTimer;
+            }
+        }
     }
 }
