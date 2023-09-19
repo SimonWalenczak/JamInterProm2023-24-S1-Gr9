@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> ScreenActive;
     public int TotalScreenActive;
+    public int NbScreenForDefeat;
     
     public void CheckActiveScreen()
     {
@@ -98,7 +99,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         CheckActiveScreen();
-        if (TotalScreenActive <= 3)
+        if (TotalScreenActive <= NbScreenForDefeat)
         {
             Cursor.visible = true;
             SceneManager.LoadScene(1);

@@ -7680,7 +7680,7 @@ MonoBehaviour:
   - {fileID: 1964940615}
   - {fileID: 1820088087}
   TotalScreenActive: 0
-  GameOverPanel: {fileID: 1210999806}
+  NbScreenForDefeat: 3
 --- !u!224 &1314716867
 RectTransform:
   m_ObjectHideFlags: 0
