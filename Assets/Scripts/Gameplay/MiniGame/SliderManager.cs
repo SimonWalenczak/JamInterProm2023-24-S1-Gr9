@@ -19,8 +19,13 @@ public class SliderManager : MonoBehaviour
     public List<Slider> Sliders;
 
     private int nbSucces;
-   
+
+    public float _startBuggedTimer;
+    private float buggedTimer;
     
+    public GameObject Screen5;
+    public AudioSource OffTV;
+
     public void StartChallenge()
     {
         foreach (var modelSprite in ModelsSprites)
@@ -31,6 +36,21 @@ public class SliderManager : MonoBehaviour
 
     private void Update()
     {
+        if (interactable.IsActive)
+        {
+            buggedTimer -= Time.deltaTime;
+
+            if (buggedTimer <= 0)
+            {
+                OffTV.Play();
+                Screen5.SetActive(false);
+            }
+        }
+        else
+        {
+            buggedTimer = _startBuggedTimer;
+        }
+
         if (GameManager.instance.desactivSystem)
         {
             foreach (var slider in Sliders)
@@ -45,7 +65,7 @@ public class SliderManager : MonoBehaviour
                 slider.interactable = true;
             }
         }
-    
+
         for (int i = 0; i < Sliders.Count; i++)
         {
             ActualSprites[i].sprite = PlayerForms[(int)Sliders[i].value];

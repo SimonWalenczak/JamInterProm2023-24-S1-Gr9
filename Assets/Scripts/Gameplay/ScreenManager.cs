@@ -37,6 +37,16 @@ public class ScreenManager : MonoBehaviour
                     Alarms[i].MakeTimer();
                 }
             }
+
+            if (Screens[i].IsBroken)
+            {
+                if (Screens[i].GetComponentInChildren<Keyboard>() != null)
+                {
+                    Screens[i].GetComponentInChildren<Keyboard>().touch.SetActive(false);
+                }
+                
+                Screens[i].gameObject.SetActive(false);
+            }
         }
     }
 }

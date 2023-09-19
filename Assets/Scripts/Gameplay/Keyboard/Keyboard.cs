@@ -29,6 +29,7 @@ public class Keyboard : MonoBehaviour
         }
 
         GetComponentInParent<ScreenObject>().IsBugged = false;
+
         gameObject.SetActive(false);
     }
 

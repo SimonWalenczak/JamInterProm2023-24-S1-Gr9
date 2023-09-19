@@ -23,6 +23,8 @@ public class ScreenObject : MonoBehaviour
     public float _startBuggedTimer;
     private float buggedTimer;
 
+    public AudioSource OffTV;
+
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -56,7 +58,7 @@ public class ScreenObject : MonoBehaviour
             ScreenBugged.GetComponent<Keyboard>().ChooseKeyboard();
         }
     }
-    
+
     private void Update()
     {
         if (IsBugged)
@@ -65,8 +67,13 @@ public class ScreenObject : MonoBehaviour
 
             if (buggedTimer <= 0)
             {
-                buggedTimer = _startBuggedTimer;
+                OffTV.Play();
+                IsBroken = true;
             }
+        }
+        else
+        {
+            buggedTimer = _startBuggedTimer;
         }
     }
 }
