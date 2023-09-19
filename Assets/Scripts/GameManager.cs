@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public bool desactivSystem;
-
+    
     #region TimerBasicScreen
 
     public float TimeMultiplicator1 = 1;
@@ -56,6 +56,23 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> GameSounds;
 
+    public List<GameObject> ScreenActive;
+    public int TotalScreenActive;
+    public GameObject GameOverPanel;
+    
+    public void CheckActiveScreen()
+    {
+        TotalScreenActive = ScreenActive.Count;
+        
+        foreach (var screen in ScreenActive)
+        {
+            if (screen.activeSelf == false)
+            {
+                TotalScreenActive--;
+            }
+        }
+    }
+    
     private void Awake()
     {
         if (instance == null)
@@ -74,10 +91,18 @@ public class GameManager : MonoBehaviour
         actualTimerMULTI1 = startTimerMulti1;
         actualTimerMULTI2 = startTimerMulti2;
         actualTimerMULTI3 = startTimerMulti3;
+        
+        TotalScreenActive = ScreenActive.Count;
     }
 
     private void Update()
     {
+        CheckActiveScreen();
+        if (TotalScreenActive <= 3)
+        {
+            GameOverPanel.SetActive(true);
+        }
+        
         //Change Multiplicator 1
         actualTimerMULTI1 -= Time.deltaTime;
 

@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +5,7 @@ public class ScreenManager : MonoBehaviour
 {
     public List<ScreenObject> Screens;
     [HideInInspector] public List<Alarm> Alarms;
+    
 
     private void Start()
     {
