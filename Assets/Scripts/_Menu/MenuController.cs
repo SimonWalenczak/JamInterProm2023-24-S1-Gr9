@@ -18,6 +18,11 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
+    }
+    
     public void Quit()
     {
         //If we are running in a standalone build of the game

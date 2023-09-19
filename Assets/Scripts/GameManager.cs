@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -58,7 +59,6 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> ScreenActive;
     public int TotalScreenActive;
-    public GameObject GameOverPanel;
     
     public void CheckActiveScreen()
     {
@@ -100,7 +100,8 @@ public class GameManager : MonoBehaviour
         CheckActiveScreen();
         if (TotalScreenActive <= 3)
         {
-            GameOverPanel.SetActive(true);
+            Cursor.visible = true;
+            SceneManager.LoadScene(1);
         }
         
         //Change Multiplicator 1
