@@ -1629,7 +1629,7 @@ MonoBehaviour:
   ActualTimer: 0
   _minTimerValue: 4
   _maxTimerValue: 6
-  Type: 0
+  Type: 1
 --- !u!114 &221901561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1653,6 +1653,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a633e9d1f6a011445b9faeb000f57edc, type: 3}
   _startBuggedTimer: 8
   OffTV: {fileID: 70481016}
+  FirstTimerSet: 0
 --- !u!82 &221901562
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3182,6 +3183,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a633e9d1f6a011445b9faeb000f57edc, type: 3}
   _startBuggedTimer: 6
   OffTV: {fileID: 1841874894}
+  FirstTimerSet: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -6575,6 +6577,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a633e9d1f6a011445b9faeb000f57edc, type: 3}
   _startBuggedTimer: 6
   OffTV: {fileID: 1318376959}
+  FirstTimerSet: 0
 --- !u!1 &1089542969
 GameObject:
   m_ObjectHideFlags: 0
@@ -7650,23 +7653,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   desactivSystem: 0
   TimeMultiplicator1: 1
-  TimeMultiplicator2: 1
-  TimeMultiplicator3: 1
+  TimeMultiplicator2: 0
+  TimeMultiplicator3: 0
   startTimerMulti1: 30
   startTimerMulti2: 60
   startTimerMulti3: 180
-  firstReduceMulti2: 0.5
-  firstReduceMulti3: 0.5
-  RepeatTimerMulti1: 30
-  RepeatTimerMulti2: 60
-  RepeatTimerMulti3: 60
+  firstMultiplicator2: 1
+  firstMultiplicator3: 1
+  RepeatTimerMulti1: 1
+  RepeatTimerMulti2: 1
+  RepeatTimerMulti3: 1
   otherReduceMulti1: 0.1
   otherReduceMulti2: 0.1
   otherReduceMulti3: 0.1
-  _maxReduceMulti1: 0
-  _maxReduceMulti2: 0
-  _maxReduceMulti3: 0
-  isFirstScreen: 0
+  _maxReduceMulti1: 0.3
+  _maxReduceMulti2: 0.3
+  _maxReduceMulti3: 0.3
+  MULTI2Unlock: 0
+  MULTI3Unlock: 0
+  actualTimerMULTI1: 0
+  actualTimerMULTI2: 0
+  actualTimerMULTI3: 0
   canBug: 0
   GameSounds:
   - {fileID: 1853454482}
@@ -7680,7 +7687,7 @@ MonoBehaviour:
   - {fileID: 1964940615}
   - {fileID: 1820088087}
   TotalScreenActive: 0
-  NbScreenForDefeat: 3
+  NbScreenForDefeat: -1
 --- !u!224 &1314716867
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9374,6 +9381,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a633e9d1f6a011445b9faeb000f57edc, type: 3}
   _startBuggedTimer: 6
   OffTV: {fileID: 523297782}
+  FirstTimerSet: 0
 --- !u!1 &1822450276
 GameObject:
   m_ObjectHideFlags: 0
@@ -10468,6 +10476,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a633e9d1f6a011445b9faeb000f57edc, type: 3}
   _startBuggedTimer: 6
   OffTV: {fileID: 1330057541}
+  FirstTimerSet: 0
 --- !u!1 &1964940615
 GameObject:
   m_ObjectHideFlags: 0
@@ -10639,6 +10648,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a633e9d1f6a011445b9faeb000f57edc, type: 3}
   _startBuggedTimer: 6
   OffTV: {fileID: 2040224905}
+  FirstTimerSet: 0
 --- !u!1 &1973082042
 GameObject:
   m_ObjectHideFlags: 0
@@ -12021,10 +12031,10 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1205776800}
   - {fileID: 1916587811}
   - {fileID: 100567816}
   - {fileID: 401269890}
-  - {fileID: 1314716867}
   - {fileID: 566012757}
   - {fileID: 1558116789}
-  - {fileID: 1205776800}
+  - {fileID: 1314716867}

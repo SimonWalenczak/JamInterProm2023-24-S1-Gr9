@@ -29,15 +29,18 @@ public class LampDesktop : MonoBehaviour
 
     private void Update()
     {
-        if (!switcher.IsRed)
+        if (GameManager.instance.canBug)
         {
-            timerRnd -= Time.deltaTime;
-
-            if (timerRnd <= 0)
+            if (!switcher.IsRed)
             {
-                _spriteRenderer.sprite = _sprites[1];
-                switcher.IsRed = true;
-                GameManager.instance.desactivSystem = true;
+                timerRnd -= Time.deltaTime;
+
+                if (timerRnd <= 0)
+                {
+                    _spriteRenderer.sprite = _sprites[1];
+                    switcher.IsRed = true;
+                    GameManager.instance.desactivSystem = true;
+                }
             }
         }
 
@@ -46,6 +49,5 @@ public class LampDesktop : MonoBehaviour
             MakeLeverTimer();
             _spriteRenderer.sprite = _sprites[0];
         }
-
     }
 }

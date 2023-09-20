@@ -25,6 +25,8 @@ public class ScreenObject : MonoBehaviour
 
     public AudioSource OffTV;
 
+    [HideInInspector] public bool FirstTimerSet;
+    
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();

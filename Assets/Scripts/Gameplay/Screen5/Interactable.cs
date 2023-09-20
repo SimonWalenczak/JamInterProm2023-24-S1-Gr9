@@ -8,11 +8,14 @@ public class Interactable : MonoBehaviour
 {
     public Ecran ecran;
     public bool IsActive;
-    
+
     public void ResetScreen()
     {
-        ecran.gameObject.SetActive(gameObject.activeSelf);
-        ecran.MakeTimer();
-        IsActive = false;
+        if (GameManager.instance.canBug)
+        {
+            ecran.gameObject.SetActive(gameObject.activeSelf);
+            ecran.MakeTimer();
+            IsActive = false;
+        }
     }
 }

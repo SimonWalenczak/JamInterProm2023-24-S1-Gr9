@@ -20,9 +20,27 @@ public class ScreenManager : MonoBehaviour
 
     private void Update()
     {
+        foreach (var alarm in Alarms)
+        {
+            switch (alarm.Type)
+            {
+                case TypeOfTimer.Easy:
+                    alarm.GetComponent<ScreenObject>().FirstTimerSet = true;
+                    break;
+                case TypeOfTimer.Medium:
+                    if (GameManager.instance.MULTI2Unlock)
+                        alarm.GetComponent<ScreenObject>().FirstTimerSet = true;
+                    break;
+                case TypeOfTimer.Hard:
+                    if (GameManager.instance.MULTI3Unlock)
+                        alarm.GetComponent<ScreenObject>().FirstTimerSet = true;
+                    break;
+            }
+        }
+        
         for (int i = 0; i < Alarms.Count; i++)
         {
-            if (GameManager.instance.canBug && !Screens[i].IsBugged && !Screens[i].IsBroken)
+            if (GameManager.instance.canBug && !Screens[i].IsBugged && !Screens[i].IsBroken && Screens[i].FirstTimerSet)
             {
                 Alarms[i].ActualTimer -= Time.deltaTime;
 
