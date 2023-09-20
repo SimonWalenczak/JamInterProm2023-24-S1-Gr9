@@ -2583,7 +2583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invasionTimer: 45
-  ActualTimer: 2
+  ActualTimer: 0
   video1: {fileID: 2039779119}
   video2: {fileID: 873522830}
   IsAlien: 0
@@ -7660,9 +7660,9 @@ MonoBehaviour:
   startTimerMulti3: 180
   firstMultiplicator2: 1
   firstMultiplicator3: 1
-  RepeatTimerMulti1: 1
-  RepeatTimerMulti2: 1
-  RepeatTimerMulti3: 1
+  RepeatTimerMulti1: 30
+  RepeatTimerMulti2: 60
+  RepeatTimerMulti3: 60
   otherReduceMulti1: 0.1
   otherReduceMulti2: 0.1
   otherReduceMulti3: 0.1
@@ -7687,7 +7687,7 @@ MonoBehaviour:
   - {fileID: 1964940615}
   - {fileID: 1820088087}
   TotalScreenActive: 0
-  NbScreenForDefeat: -1
+  NbScreenForDefeat: 3
 --- !u!224 &1314716867
 RectTransform:
   m_ObjectHideFlags: 0
