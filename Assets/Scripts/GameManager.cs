@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -61,7 +63,20 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> ScreenActive;
     public int TotalScreenActive;
+    
+    [Space(10)][Header("Game Over")]
     public int NbScreenForDefeat;
+    public GameObject GameOverPanel;
+    public Image BlackGround;
+    public Image ScreenOff;
+    public float TimeBeforeDisconnectScreen;
+    public Image DisconnectScreens;
+    public int nbDisconnectScreen;
+    public float TimeToFadeDisconnect;
+    public float TimeBetweenDisconnectScreen;
+    public float TimeBlackGroundAppear;
+    private bool _isGameOver;
+    public List<GameObject> InteractibleScreensGameOver;
 
     public void CheckActiveScreen()
     {
@@ -97,13 +112,56 @@ public class GameManager : MonoBehaviour
         TotalScreenActive = ScreenActive.Count;
     }
 
+    public IEnumerator GameOver()
+    {
+        GameOverPanel.SetActive(true);
+
+        GetComponent<AudioSource>().Play();
+        
+        foreach (var sound in GameSounds)
+        {
+            sound.GetComponent<AudioSource>().mute = true;
+        }
+
+        foreach (var screen in ScreenActive)
+        {
+            if (screen.GetComponent<AudioSource>() != null)
+            {
+                screen.GetComponent<AudioSource>().mute = true;
+            }
+        }
+        
+        canBug = false;
+
+        ScreenOff.DOFade(1f, 0.1f);
+        yield return new WaitForSeconds(TimeBeforeDisconnectScreen);
+
+        int i = 0;
+        while (i < nbDisconnectScreen)
+        {
+            DisconnectScreens.DOFade(1, TimeToFadeDisconnect);
+            yield return new WaitForSeconds(TimeBetweenDisconnectScreen);     
+            DisconnectScreens.DOFade(0, TimeToFadeDisconnect);
+            yield return new WaitForSeconds(TimeBetweenDisconnectScreen);
+            i++;
+        }
+        
+        BlackGround.DOFade(0.78f, TimeBlackGroundAppear);
+        yield return new WaitForSeconds(TimeBlackGroundAppear);
+
+        foreach (var screen in InteractibleScreensGameOver)
+        {
+            screen.transform.DOMoveY(-3.7f, 2);
+        }
+    }
+    
     private void Update()
     {
         CheckActiveScreen();
-        if (TotalScreenActive <= NbScreenForDefeat)
+        if (!_isGameOver && TotalScreenActive <= NbScreenForDefeat)
         {
-            Cursor.visible = true;
-            SceneManager.LoadScene(1);
+            _isGameOver = true;
+            StartCoroutine(GameOver());
         }
 
         if (canBug)

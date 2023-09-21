@@ -9,7 +9,7 @@ public class MenuController : MonoBehaviour
 {
     public GameObject MenuPanel;
 
-    public List<GameObject> InteractibleScreens;
+    public List<GameObject> InteractibleScreensMainMenu;
     public Image BlackGround;
     public Image ScreenOff;
     public GameObject StartScreen;
@@ -27,7 +27,7 @@ public class MenuController : MonoBehaviour
     public float ScreenOffFadeOutSpeed;
     public float TimeBeforePlay;
 
-    
+
     public void Play()
     {
         StartCoroutine(GoToPlayMode());
@@ -35,7 +35,7 @@ public class MenuController : MonoBehaviour
 
     public IEnumerator GoToPlayMode()
     {
-        foreach (var screen in InteractibleScreens)
+        foreach (var screen in InteractibleScreensMainMenu)
         {
             screen.transform.DOMoveY(transform.position.y - 10, ScreenGoDownSpeed);
         }
