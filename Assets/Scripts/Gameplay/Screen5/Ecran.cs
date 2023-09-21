@@ -36,6 +36,17 @@ public class Ecran : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.canBug && !FirstTimerSet)
+        {
+            TimeBeforeStartBug -= Time.deltaTime;
+
+            if (TimeBeforeStartBug <= 0)
+            {
+                MakeTimer();
+                FirstTimerSet = true;
+            }
+        }
+        
         if (FirstTimerSet && interactable.IsActive == false)
         {
             _actualTimer -= Time.deltaTime;
@@ -44,17 +55,6 @@ public class Ecran : MonoBehaviour
             {
                 interactable.IsActive = true;
                 gameObject.SetActive(!gameObject.activeSelf);
-            }
-        }
-
-        if (GameManager.instance.canBug)
-        {
-            TimeBeforeStartBug -= Time.deltaTime;
-
-            if (TimeBeforeStartBug <= 0)
-            {
-                MakeTimer();
-                FirstTimerSet = true;
             }
         }
     }
