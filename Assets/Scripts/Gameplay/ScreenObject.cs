@@ -66,6 +66,12 @@ public class ScreenObject : MonoBehaviour
         }
     }
 
+    public void BrokeTV()
+    {
+        OffTV.Play();
+        IsBroken = true;
+    }
+    
     private void Update()
     {
         if (IsBugged)
@@ -74,8 +80,7 @@ public class ScreenObject : MonoBehaviour
 
             if (buggedTimer <= 0)
             {
-                OffTV.Play();
-                IsBroken = true;
+               BrokeTV();
             }
         }
         else

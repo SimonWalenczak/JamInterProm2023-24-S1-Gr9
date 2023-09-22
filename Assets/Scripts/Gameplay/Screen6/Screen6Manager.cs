@@ -26,13 +26,18 @@ public class Screen6Manager : MonoBehaviour
 
     private void Update()
     {
-        if (screen6.IsBugged)
-        {
-            DisplayDigicode.SetActive(true);
-        }
+        if (screen6.IsBroken)
+            DisplayDigicode.SetActive(false);
         else
         {
-            DisplayDigicode.SetActive(false);
+            if (screen6.IsBugged)
+            {
+                DisplayDigicode.SetActive(true);
+            }
+            else
+            {
+                DisplayDigicode.SetActive(false);
+            }
         }
     }
 }

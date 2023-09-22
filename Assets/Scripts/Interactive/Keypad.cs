@@ -30,7 +30,7 @@ public class Keypad : MonoBehaviour
         {
             checker.color = Color.white;
         }
-        
+
         for (int i = 0; i < 4; i++)
         {
             int rnd = Random.Range(0, 9);
@@ -40,20 +40,20 @@ public class Keypad : MonoBehaviour
 
     public void Number(int number)
     {
-        Ans += number.ToString();
+        if (Screen6Manager.Instance.screen6.IsBugged && Screen6Manager.Instance.screen6.IsBroken == false &&
+            GameManager.instance.MULTI3Unlock)
+        {
+            Ans += number.ToString();
 
-        if (Ans[indexTry] == Answer[indexTry])
-        {
-            indexTry++;
-            Checkers[indexTry - 1].color = Color.green;
-        }
-        else
-        {
-            indexTry = 0;
-            Ans = "";
-            foreach (var checker in Checkers)
+            if (Ans[indexTry] == Answer[indexTry])
             {
-                checker.color = Color.white;
+                indexTry++;
+                Checkers[indexTry - 1].color = Color.green;
+            }
+            else
+            {
+                Screen6Manager.Instance.DisplayDigicode.SetActive(false);
+                Screen6Manager.Instance.screen6.BrokeTV();
             }
         }
     }
@@ -75,6 +75,8 @@ public class Keypad : MonoBehaviour
             else
             {
                 print("Invalid");
+                Screen6Manager.Instance.DisplayDigicode.SetActive(false);
+                Screen6Manager.Instance.screen6.BrokeTV();
             }
 
             Ans = "";
