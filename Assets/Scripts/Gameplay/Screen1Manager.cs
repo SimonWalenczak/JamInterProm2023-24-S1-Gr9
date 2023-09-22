@@ -31,6 +31,9 @@ public class Screen1Manager : MonoBehaviour
     Quaternion targetRotation;
     public Transform spriteRoulette;
 
+    [Header("Score")]
+    public int ScoreIncreased;
+
     private void Awake()
     {
         if (Instance == null)
@@ -92,6 +95,8 @@ public class Screen1Manager : MonoBehaviour
 
     public void ResetScreen()
     {
+        GameData.ActualScore += ScoreIncreased;
+
         Screen1.IsBugged = false;
         gameObject.SetActive(false);
     }

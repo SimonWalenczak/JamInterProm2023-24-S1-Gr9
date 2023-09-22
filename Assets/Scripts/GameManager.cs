@@ -10,7 +10,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
     public bool desactivSystem;
 
     #region TimerBasicScreen
@@ -64,6 +63,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> ScreenActive;
     public int TotalScreenActive;
     
+    #region GameOver
     [Space(10)][Header("Game Over")]
     public int NbScreenForDefeat;
     public GameObject GameOverPanel;
@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
     public float TimeBlackGroundAppear;
     private bool _isGameOver;
     public List<GameObject> InteractibleScreensGameOver;
+    #endregion
 
     public void CheckActiveScreen()
     {

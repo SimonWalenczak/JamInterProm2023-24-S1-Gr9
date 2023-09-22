@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour
 {
     public GameObject MenuPanel;
+    public BigButton BigButton;
 
     public List<GameObject> InteractibleScreensMainMenu;
     public Image BlackGround;
@@ -27,6 +28,10 @@ public class MenuController : MonoBehaviour
     public float ScreenOffFadeOutSpeed;
     public float TimeBeforePlay;
 
+    public void ResetActualScore()
+    {
+        GameData.ActualScore = 0;
+    }
 
     public void Play()
     {
@@ -59,6 +64,11 @@ public class MenuController : MonoBehaviour
         {
             gameSound.GetComponent<AudioSource>().Play();
         }
+
+        GameManager.instance.canBug = true;
+        BigButton.CanResetScreen = true;
+        
+        ResetActualScore();
     }
     
     public void Restart()

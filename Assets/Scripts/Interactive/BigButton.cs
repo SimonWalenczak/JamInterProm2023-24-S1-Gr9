@@ -18,7 +18,6 @@ public class BigButton : MonoBehaviour
 
     private void Start()
     {
-        CanResetScreen = true;
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -38,7 +37,7 @@ public class BigButton : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (CanResetScreen)
+        if (CanResetScreen && GameManager.instance.canBug)
         {
             _isUsing = true;
             GetComponent<AudioSource>().Play();
