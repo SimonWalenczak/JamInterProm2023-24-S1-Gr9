@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
     public float TimeBlackGroundAppear;
     private bool _isGameOver;
     public List<GameObject> InteractibleScreensGameOver;
+    public TMP_Text YourScoreText;
     public TMP_Text ScoreText;
     public TMP_Text BestScoreText;
     public List<TMP_Text> BestScores;
@@ -160,7 +161,8 @@ public class GameManager : MonoBehaviour
             screen.transform.DOMoveY(-3.7f, 2);
         }
 
-        ScoreText.text = "Your Score : " + GameData.ActualScore.ToString();
+        ScoreText.text = GameData.ActualScore.ToString();
+        YourScoreText.DOFade(1, 2);
         ScoreText.DOFade(1, 2);
 
         DefineBestScore();
