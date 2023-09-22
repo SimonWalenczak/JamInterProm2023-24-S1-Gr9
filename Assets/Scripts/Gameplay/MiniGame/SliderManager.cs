@@ -26,6 +26,7 @@ public class SliderManager : MonoBehaviour
     public GameObject Screen5;
     public AudioSource OffTV;
 
+    [Header("Score")] public int ScoreIncreased;
     public void StartChallenge()
     {
         foreach (var modelSprite in ModelsSprites)
@@ -82,6 +83,7 @@ public class SliderManager : MonoBehaviour
         if (nbSucces == 3)
         {
             StartChallenge();
+            GameData.ActualScore += ScoreIncreased;
             interactable.ResetScreen();
         }
 

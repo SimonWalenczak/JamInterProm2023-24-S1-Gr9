@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -77,6 +78,7 @@ public class GameManager : MonoBehaviour
     public float TimeBlackGroundAppear;
     private bool _isGameOver;
     public List<GameObject> InteractibleScreensGameOver;
+    public TMP_Text ScoreText;
     #endregion
 
     public void CheckActiveScreen()
@@ -154,6 +156,9 @@ public class GameManager : MonoBehaviour
         {
             screen.transform.DOMoveY(-3.7f, 2);
         }
+
+        ScoreText.text = "Your Score : " + GameData.ActualScore.ToString();
+        ScoreText.DOFade(1,2);
     }
     
     private void Update()
