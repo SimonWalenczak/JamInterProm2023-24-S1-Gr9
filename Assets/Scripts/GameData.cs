@@ -5,7 +5,9 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameData
 {
-    public static int BestScore;
-    public static int LastestScore;
+    public static int BestScore1;
+    public static int BestScore2;
+    public static int BestScore3;
+    
     public static int ActualScore;
 }

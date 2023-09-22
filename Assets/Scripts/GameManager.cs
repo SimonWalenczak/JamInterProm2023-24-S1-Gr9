@@ -42,13 +42,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float otherReduceMulti2 = 0.1f;
     [SerializeField] private float otherReduceMulti3 = 0.1f;
 
-    [Space(10)] [Header("Max Reduce")]
-    [SerializeField] private float _maxReduceMulti1;
+    [Space(10)] [Header("Max Reduce")] [SerializeField]
+    private float _maxReduceMulti1;
+
     [SerializeField] private float _maxReduceMulti2;
     [SerializeField] private float _maxReduceMulti3;
-    
-    [Space(10)] [Header("Debug")]
-    public bool MULTI2Unlock;
+
+    [Space(10)] [Header("Debug")] public bool MULTI2Unlock;
     public bool MULTI3Unlock;
 
     [ReadOnly] [SerializeField] private float actualTimerMULTI1;
@@ -63,10 +63,10 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> ScreenActive;
     public int TotalScreenActive;
-    
+
     #region GameOver
-    [Space(10)][Header("Game Over")]
-    public int NbScreenForDefeat;
+
+    [Space(10)] [Header("Game Over")] public int NbScreenForDefeat;
     public GameObject GameOverPanel;
     public Image BlackGround;
     public Image ScreenOff;
@@ -79,6 +79,9 @@ public class GameManager : MonoBehaviour
     private bool _isGameOver;
     public List<GameObject> InteractibleScreensGameOver;
     public TMP_Text ScoreText;
+    public TMP_Text BestScoreText;
+    public List<TMP_Text> BestScores;
+
     #endregion
 
     public void CheckActiveScreen()
@@ -120,7 +123,7 @@ public class GameManager : MonoBehaviour
         GameOverPanel.SetActive(true);
 
         GetComponent<AudioSource>().Play();
-        
+
         foreach (var sound in GameSounds)
         {
             sound.GetComponent<AudioSource>().mute = true;
@@ -133,7 +136,7 @@ public class GameManager : MonoBehaviour
                 screen.GetComponent<AudioSource>().mute = true;
             }
         }
-        
+
         canBug = false;
 
         ScreenOff.DOFade(1f, 0.1f);
@@ -143,12 +146,12 @@ public class GameManager : MonoBehaviour
         while (i < nbDisconnectScreen)
         {
             DisconnectScreens.DOFade(1, TimeToFadeDisconnect);
-            yield return new WaitForSeconds(TimeBetweenDisconnectScreen);     
+            yield return new WaitForSeconds(TimeBetweenDisconnectScreen);
             DisconnectScreens.DOFade(0, TimeToFadeDisconnect);
             yield return new WaitForSeconds(TimeBetweenDisconnectScreen);
             i++;
         }
-        
+
         BlackGround.DOFade(0.78f, TimeBlackGroundAppear);
         yield return new WaitForSeconds(TimeBlackGroundAppear);
 
@@ -158,11 +161,67 @@ public class GameManager : MonoBehaviour
         }
 
         ScoreText.text = "Your Score : " + GameData.ActualScore.ToString();
-        ScoreText.DOFade(1,2);
+        ScoreText.DOFade(1, 2);
+
+        DefineBestScore();
+        
+        BestScoreText.DOFade(1, 2);
+        foreach (var tmpText in BestScores)
+        {
+            tmpText.DOFade(1, 2);
+        }
     }
-    
+
+    public void DefineBestScore()
+    {
+        if (GameData.ActualScore >= GameData.BestScore1)
+        {
+            GameData.BestScore3 = GameData.BestScore2;
+            GameData.BestScore2 = GameData.BestScore1;
+            GameData.BestScore1 = GameData.ActualScore;
+            BestScores[0].DOColor(Color.green, 0.01f);
+            BestScores[0].text = "-- " + GameData.BestScore1.ToString() + " --";
+            BestScores[1].text = GameData.BestScore2.ToString();
+            BestScores[2].text = GameData.BestScore3.ToString();
+        }
+        else if (GameData.ActualScore >= GameData.BestScore2)
+        {
+            GameData.BestScore3 = GameData.BestScore2;
+            GameData.BestScore2 = GameData.ActualScore;
+            BestScores[0].text = GameData.BestScore1.ToString();
+            BestScores[1].DOColor(Color.green, 0.01f);
+            BestScores[1].text = "-- " + GameData.BestScore2.ToString() + " --";
+            BestScores[2].text = GameData.BestScore3.ToString();
+        }
+        else if (GameData.ActualScore >= GameData.BestScore3)
+        {
+            GameData.BestScore3 = GameData.ActualScore;
+            BestScores[0].text = GameData.BestScore1.ToString();
+            BestScores[1].text = GameData.BestScore2.ToString();
+            BestScores[2].DOColor(Color.green, 0.01f);
+            BestScores[2].text = "-- " + GameData.BestScore3.ToString() + " --";
+        }
+        else
+        {
+            BestScores[0].DOColor(Color.white, 0.01f);
+            BestScores[1].DOColor(Color.white, 0.01f);
+            BestScores[2].DOColor(Color.white, 0.01f);
+            BestScores[0].text = GameData.BestScore1.ToString();
+            BestScores[1].text = GameData.BestScore2.ToString();
+            BestScores[2].text = GameData.BestScore3.ToString();
+        }
+    }
+
     private void Update()
     {
+        if (Input.GetKeyDown("-") || Input.GetKeyDown("[-]"))
+        {
+            GameData.ActualScore = 0;
+            GameData.BestScore1 = 0;
+            GameData.BestScore2 = 0;
+            GameData.BestScore3 = 0;
+        }
+
         CheckActiveScreen();
         if (!_isGameOver && TotalScreenActive <= NbScreenForDefeat)
         {
@@ -189,7 +248,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Change Multiplicator 2
-        
+
         if (actualTimerMULTI2 <= 0)
         {
             if (MULTI2Unlock)
@@ -210,7 +269,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Change Multiplicator 3
-        
+
         if (actualTimerMULTI3 <= 0)
         {
             if (MULTI3Unlock)
