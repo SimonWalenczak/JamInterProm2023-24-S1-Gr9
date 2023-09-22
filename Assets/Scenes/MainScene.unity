@@ -1120,8 +1120,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 168, y: -381}
-  m_SizeDelta: {x: 552, y: 400}
+  m_AnchoredPosition: {x: 164.51, y: -384}
+  m_SizeDelta: {x: 543.51, y: 393.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &151969676
 MonoBehaviour:
@@ -8303,13 +8303,13 @@ MonoBehaviour:
   BlackGround: {fileID: 1844329680}
   ScreenOff: {fileID: 688034904}
   StartScreen: {fileID: 1155539263}
-  ScreenGoDownSpeed: 3
-  TimeBeforeBlackGround: 1
-  BlackGroundFadeSpeed: 2
-  TimeBeforeScreenOff: 2
-  ScreenOffFadeInSpeed: 5
-  ScreenOffFadeOutSpeed: 2
-  TimeBeforePlay: 1
+  ScreenGoDownSpeed: 0.8
+  TimeBeforeBlackGround: 0.5
+  BlackGroundFadeSpeed: 1
+  TimeBeforeScreenOff: 0
+  ScreenOffFadeInSpeed: 0.5
+  ScreenOffFadeOutSpeed: 0.5
+  TimeBeforePlay: 0.2
 --- !u!114 &1314716870
 MonoBehaviour:
   m_ObjectHideFlags: 0
