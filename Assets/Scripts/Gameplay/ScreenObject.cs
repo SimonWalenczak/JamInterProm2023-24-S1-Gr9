@@ -59,6 +59,11 @@ public class ScreenObject : MonoBehaviour
 
             ScreenBugged.GetComponent<Keyboard>().ChooseKeyboard();
         }
+        
+        if (gameObject.GetComponent<Screen6Manager>() != null)
+        {
+            gameObject.GetComponent<Screen6Manager>().Digicode.DefineCode();
+        }
     }
 
     private void Update()
