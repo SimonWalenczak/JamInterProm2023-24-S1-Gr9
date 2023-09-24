@@ -19,6 +19,7 @@ public class BigButton : MonoBehaviour
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        CanResetScreen = false;
     }
 
     private void Update()

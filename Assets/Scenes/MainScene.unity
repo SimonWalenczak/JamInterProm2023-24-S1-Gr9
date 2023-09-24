@@ -2116,7 +2116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minChanceValue: 1
-  maxChanceValue: 3
+  maxChanceValue: 2
   IsBroken: 0
   IsBugged: 0
   ScreenBugged: {fileID: 920178264}
@@ -2124,7 +2124,7 @@ MonoBehaviour:
   clipToPlay: 0
   Clips:
   - {fileID: 8300000, guid: a633e9d1f6a011445b9faeb000f57edc, type: 3}
-  _startBuggedTimer: 8
+  _startBuggedTimer: 12
   OffTV: {fileID: 70481016}
   FirstTimerSet: 0
 --- !u!82 &221901562
@@ -4006,7 +4006,7 @@ MonoBehaviour:
   clipToPlay: 0
   Clips:
   - {fileID: 8300000, guid: a633e9d1f6a011445b9faeb000f57edc, type: 3}
-  _startBuggedTimer: 6
+  _startBuggedTimer: 4
   OffTV: {fileID: 1841874894}
   FirstTimerSet: 0
 --- !u!1 &512746800
@@ -5453,7 +5453,7 @@ MonoBehaviour:
   ActualTimer: 0
   _minTimerValue: 4
   _maxTimerValue: 6
-  Type: 0
+  Type: 2
 --- !u!114 &622174420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6983,7 +6983,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 31f603d23a8590c42ba5bbce562d7378, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 398a0ce0f84ccee458069464cf36cd43, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -8795,7 +8795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -59.124}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2.2000008, y: 1.7}
+  m_AnchoredPosition: {x: -3.7000008, y: 4.4}
   m_SizeDelta: {x: 33, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1032254869
@@ -9005,7 +9005,7 @@ MonoBehaviour:
   clipToPlay: 0
   Clips:
   - {fileID: 8300000, guid: a633e9d1f6a011445b9faeb000f57edc, type: 3}
-  _startBuggedTimer: 6
+  _startBuggedTimer: 4
   OffTV: {fileID: 1318376959}
   FirstTimerSet: 0
 --- !u!1 &1089542969
@@ -10524,7 +10524,7 @@ MonoBehaviour:
   TimeMultiplicator3: 0
   startTimerMulti1: 30
   startTimerMulti2: 60
-  startTimerMulti3: 180
+  startTimerMulti3: 120
   firstMultiplicator2: 1
   firstMultiplicator3: 1
   RepeatTimerMulti1: 30
@@ -10554,16 +10554,16 @@ MonoBehaviour:
   - {fileID: 1964940615}
   - {fileID: 1820088087}
   TotalScreenActive: 0
-  NbScreenForDefeat: 3
+  NbScreenForDefeat: 2
   GameOverPanel: {fileID: 1210999806}
   BlackGround: {fileID: 1710312260}
   ScreenOff: {fileID: 1024562168}
-  TimeBeforeDisconnectScreen: 1
+  TimeBeforeDisconnectScreen: 0.5
   DisconnectScreens: {fileID: 1313967080}
   nbDisconnectScreen: 3
-  TimeToFadeDisconnect: 0.2
-  TimeBetweenDisconnectScreen: 1
-  TimeBlackGroundAppear: 1
+  TimeToFadeDisconnect: 0.1
+  TimeBetweenDisconnectScreen: 0.3
+  TimeBlackGroundAppear: 0.2
   InteractibleScreensGameOver:
   - {fileID: 202862610}
   YourScoreText: {fileID: 24346333}
@@ -14922,7 +14922,7 @@ MonoBehaviour:
   clipToPlay: 0
   Clips:
   - {fileID: 8300000, guid: a633e9d1f6a011445b9faeb000f57edc, type: 3}
-  _startBuggedTimer: 6
+  _startBuggedTimer: 4
   OffTV: {fileID: 1330057541}
   FirstTimerSet: 0
 --- !u!1 &1964940615
@@ -15094,7 +15094,7 @@ MonoBehaviour:
   clipToPlay: 0
   Clips:
   - {fileID: 8300000, guid: a633e9d1f6a011445b9faeb000f57edc, type: 3}
-  _startBuggedTimer: 6
+  _startBuggedTimer: 4
   OffTV: {fileID: 2040224905}
   FirstTimerSet: 0
 --- !u!1 &1973082042
