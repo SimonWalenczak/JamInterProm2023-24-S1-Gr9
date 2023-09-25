@@ -1847,7 +1847,7 @@ GameObject:
   - component: {fileID: 202862613}
   - component: {fileID: 202862612}
   m_Layer: 5
-  m_Name: RestartButton
+  m_Name: MainMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10566,6 +10566,7 @@ MonoBehaviour:
   TimeBlackGroundAppear: 0.2
   InteractibleScreensGameOver:
   - {fileID: 202862610}
+  TimerMainMenuButton: 1
   YourScoreText: {fileID: 24346333}
   ScoreText: {fileID: 121761807}
   BestScoreText: {fileID: 639930871}
