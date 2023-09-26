@@ -13,6 +13,8 @@ public class ScreenObject : MonoBehaviour
     [Space(10)] [Header("Bugged Screen")] public bool IsBroken;
     public bool IsBugged;
     public GameObject ScreenBugged;
+    public List<Sprite> LoupiotteScreenSprite;
+    public SpriteRenderer LoupiotteScreen;
 
     [Space(10)] [Header("Audio")] [HideInInspector]
     public AudioSource _audioSource;
@@ -76,6 +78,7 @@ public class ScreenObject : MonoBehaviour
     {
         if (IsBugged)
         {
+            LoupiotteScreen.sprite = LoupiotteScreenSprite[1];
             buggedTimer -= Time.deltaTime;
 
             if (buggedTimer <= 0)
@@ -85,6 +88,7 @@ public class ScreenObject : MonoBehaviour
         }
         else
         {
+            LoupiotteScreen.sprite = LoupiotteScreenSprite[0];
             buggedTimer = _startBuggedTimer;
         }
     }

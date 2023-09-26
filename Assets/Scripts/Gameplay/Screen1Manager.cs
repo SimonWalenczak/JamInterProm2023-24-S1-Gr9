@@ -31,6 +31,9 @@ public class Screen1Manager : MonoBehaviour
     Quaternion targetRotation;
     public Transform spriteRoulette;
 
+    public List<Sprite> loupiotteSprites;
+    public SpriteRenderer LoupiotteMolette;
+    
     [Header("Score")]
     public int ScoreIncreased;
 
@@ -88,6 +91,14 @@ public class Screen1Manager : MonoBehaviour
         if (difference > 10)
             difference = 10;
 
+        if (difference != 0)
+        {
+            LoupiotteMolette.sprite = loupiotteSprites[1];
+        }
+        else
+        {
+            LoupiotteMolette.sprite = loupiotteSprites[0];
+        }
         _color.a = 0.1f * difference;
 
         _spriteRenderer.color = _color;
@@ -97,6 +108,7 @@ public class Screen1Manager : MonoBehaviour
     {
         GameData.ActualScore += ScoreIncreased;
 
+        LoupiotteMolette.sprite = loupiotteSprites[0];
         Screen1.IsBugged = false;
         gameObject.SetActive(false);
     }
@@ -111,6 +123,8 @@ public class Screen1Manager : MonoBehaviour
             _wasOn = true;
         }
 
+        LoupiotteMolette.sprite = loupiotteSprites[1];
+        
         Random rnd = new Random();
 
         TargetValue = rnd.Next(MinValue, MaxValue);

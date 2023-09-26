@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,6 +10,9 @@ public class Interactable : MonoBehaviour
     public Ecran ecran;
     public bool IsActive;
 
+    public List<Sprite> LoupiotteScreenSprites;
+    public SpriteRenderer LoupiotteScreen;
+    
     public void ResetScreen()
     {
         if (GameManager.instance.canBug)
@@ -17,5 +21,10 @@ public class Interactable : MonoBehaviour
             ecran.MakeTimer();
             IsActive = false;
         }
+    }
+
+    private void Update()
+    {
+        LoupiotteScreen.sprite = IsActive ? LoupiotteScreenSprites[1] : LoupiotteScreenSprites[0];
     }
 }

@@ -6,7 +6,10 @@ using UnityEngine;
 public class BigButton : MonoBehaviour
 {
     public List<Keyboard> Keyboards;
-
+    public Screen1Manager Screen1Manager;
+    public Ecran screen5;
+    public Keypad Keypad;
+    
     public bool CanResetScreen;
 
     public Sprite BigButtonUnarmedSprite;
@@ -52,6 +55,10 @@ public class BigButton : MonoBehaviour
 
                 keyboard.RestoreSignal();
             }
+            
+            Screen1Manager.ResetScreen();
+            screen5.interactable.ResetScreen();
+            Keypad.ResetScreen();
         }
     }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,13 +16,23 @@ public class Keypad : MonoBehaviour
     public List<Image> Checkers;
     [SerializeField] private int indexTry;
 
+
+    [Header("Time Before between code")] public float TimerBetweenCodes;
+
+    [HideInInspector] public float actualTimerBetweenCodes;
+
+    [HideInInspector] public bool CanCreateCode;
+
     private void Start()
     {
         indexTry = 0;
+        actualTimerBetweenCodes = TimerBetweenCodes;
     }
 
     public void DefineCode()
     {
+        AwnserText.color = Color.white;
+
         indexTry = 0;
         Answer = "";
         Ans = "";
@@ -40,8 +51,8 @@ public class Keypad : MonoBehaviour
 
     public void Number(int number)
     {
-        if (Screen6Manager.Instance.screen6.IsBugged && Screen6Manager.Instance.screen6.IsBroken == false &&
-            GameManager.instance.MULTI3Unlock)
+        if (Screen6Manager.Instance.screen6.IsBugged && Screen6Manager.Instance.screen6.IsBroken == false /*&&
+            GameManager.instance.MULTI3Unlock*/)
         {
             Ans += number.ToString();
 
@@ -52,8 +63,15 @@ public class Keypad : MonoBehaviour
             }
             else
             {
-                Screen6Manager.Instance.DisplayDigicode.SetActive(false);
-                Screen6Manager.Instance.screen6.BrokeTV();
+                indexTry = 0;
+                Ans = "";
+
+                foreach (var checker in Checkers)
+                {
+                    checker.color = Color.white;
+                }
+
+                StartCoroutine(CheckCode());
             }
         }
     }
@@ -66,20 +84,44 @@ public class Keypad : MonoBehaviour
         //Check Code
         if (Ans.Length == Answer.Length)
         {
-            if (Ans == Answer)
-            {
-                print("Correct");
-                Screen6Manager.Instance.screen6.ScreenBugged.SetActive(false);
-                Screen6Manager.Instance.screen6.IsBugged = false;
-            }
-            else
-            {
-                print("Invalid");
-                Screen6Manager.Instance.DisplayDigicode.SetActive(false);
-                Screen6Manager.Instance.screen6.BrokeTV();
-            }
+            StartCoroutine(CheckCode());
 
             Ans = "";
         }
+    }
+
+    public IEnumerator CheckCode()
+    {
+        CanCreateCode = false;
+
+        if (Ans == Answer)
+        {
+            print("Correct");
+            AwnserText.color = Color.green;
+
+            yield return new WaitForSeconds(1);
+
+            ResetScreen();
+            CanCreateCode = true;
+        }
+        else
+        {
+            print("Invalid");
+            AwnserText.color = Color.red;
+
+            yield return new WaitForSeconds(1);
+
+            actualTimerBetweenCodes = TimerBetweenCodes;
+
+            DefineCode();
+            CanCreateCode = true;
+        }
+    }
+
+    public void ResetScreen()
+    {
+        actualTimerBetweenCodes = TimerBetweenCodes;
+        Screen6Manager.Instance.screen6.ScreenBugged.SetActive(false);
+        Screen6Manager.Instance.screen6.IsBugged = false;
     }
 }

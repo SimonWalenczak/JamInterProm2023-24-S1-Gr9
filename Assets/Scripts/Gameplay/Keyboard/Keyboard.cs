@@ -13,9 +13,8 @@ public class Keyboard : MonoBehaviour
 
     [HideInInspector] public bool _wasOn;
 
-    [Header("Score")]
-    public int ScoreIncreased;
-    
+    [Header("Score")] public int ScoreIncreased;
+
     void Update()
     {
         if (Input.GetKeyDown(keyCodes[randIndex]))
@@ -31,7 +30,8 @@ public class Keyboard : MonoBehaviour
             touch.SetActive(false);
         }
 
-        GetComponentInParent<ScreenObject>().IsBugged = false;
+        if (GetComponentInParent<ScreenObject>() != null)
+            GetComponentInParent<ScreenObject>().IsBugged = false;
 
         GameData.ActualScore += ScoreIncreased;
 

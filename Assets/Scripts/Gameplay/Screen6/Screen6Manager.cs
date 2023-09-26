@@ -33,6 +33,13 @@ public class Screen6Manager : MonoBehaviour
             if (screen6.IsBugged)
             {
                 DisplayDigicode.SetActive(true);
+                Digicode.actualTimerBetweenCodes -= Time.deltaTime;
+
+                if (Digicode.actualTimerBetweenCodes <= 0 && Digicode.CanCreateCode == true)
+                {
+                    Digicode.actualTimerBetweenCodes = Digicode.TimerBetweenCodes;
+                    Digicode.DefineCode();
+                }
             }
             else
             {

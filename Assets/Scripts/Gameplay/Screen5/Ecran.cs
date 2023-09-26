@@ -17,19 +17,19 @@ public class Ecran : MonoBehaviour
 
     private float TimeBeforeStartBug;
     private bool FirstTimerSet;
-    
+
     private void Start()
     {
-        TimeBeforeStartBug = GameManager.instance.startTimerMulti2;
+        //TimeBeforeStartBug = GameManager.instance.startTimerMulti2;
     }
 
     public void MakeTimer()
     {
         Random random = new Random();
         double _startingTimer =
-            random.NextDouble() * (_maxValue * GameManager.instance.TimeMultiplicator2 -
-                                   _minValue * GameManager.instance.TimeMultiplicator2) +
-            _minValue * GameManager.instance.TimeMultiplicator2;
+            random.NextDouble() * (_maxValue * GameManager.instance.TimeMultiplicator1 -
+                                   _minValue * GameManager.instance.TimeMultiplicator1) +
+            _minValue * GameManager.instance.TimeMultiplicator1;
 
         _actualTimer = (float) _startingTimer;
     }
