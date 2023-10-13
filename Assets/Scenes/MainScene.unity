@@ -6387,6 +6387,7 @@ MonoBehaviour:
   LeftArm: 0
   _leftOrigin: {x: -4.12, y: -6.28, z: 0}
   _rightOrigin: {x: 3.85, y: -6.26, z: 0}
+  _limit: 0.756
   IsActualArm: 0
   otherArm: {fileID: 2088118775}
   LimitY: 0.1
@@ -17257,6 +17258,7 @@ MonoBehaviour:
   LeftArm: 1
   _leftOrigin: {x: -4.12, y: -6.28, z: 0}
   _rightOrigin: {x: 3.85, y: -6.26, z: 0}
+  _limit: 0.416
   IsActualArm: 0
   otherArm: {fileID: 706823654}
   LimitY: 0.1

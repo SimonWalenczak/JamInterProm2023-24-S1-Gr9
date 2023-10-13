@@ -17,6 +17,7 @@ public class Arm : MonoBehaviour
     [Space(10)] [SerializeField] private bool LeftArm;
     [SerializeField] private Vector3 _leftOrigin;
     [SerializeField] private Vector3 _rightOrigin;
+    [SerializeField, Range(0,1)] private float _limit;
 
     public bool IsActualArm;
 
@@ -57,7 +58,7 @@ public class Arm : MonoBehaviour
         {
             if (IsActualArm)
             {
-                if (Input.mousePosition.x <= Screen.width * 0.75f)
+                if (Input.mousePosition.x <= Screen.width * _limit)
                 {
                     _targetPosition = new Vector3(mousePosition.x + offsetX, actualMousePosY + offsetY,
                         transform.position.z);
@@ -85,7 +86,7 @@ public class Arm : MonoBehaviour
         {
             if (IsActualArm)
             {
-                if (Input.mousePosition.x >= Screen.width * 0.25f)
+                if (Input.mousePosition.x >= Screen.width * (1- _limit))
                 {
                     _targetPosition = new Vector3(mousePosition.x + offsetX, actualMousePosY + offsetY,
                         transform.position.z);
