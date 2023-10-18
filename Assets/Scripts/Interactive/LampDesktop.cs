@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class LampDesktop : MonoBehaviour
 {
     public Switcher switcher;
-    private SpriteRenderer _spriteRenderer;
+    //private SpriteRenderer _spriteRenderer;
 
     [SerializeField] private List<Sprite> _sprites;
 
@@ -17,7 +17,7 @@ public class LampDesktop : MonoBehaviour
 
     private void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        //_spriteRenderer = GetComponent<SpriteRenderer>();
 
         MakeLeverTimer();
     }
@@ -37,7 +37,8 @@ public class LampDesktop : MonoBehaviour
 
                 if (timerRnd <= 0)
                 {
-                    _spriteRenderer.sprite = _sprites[1];
+                    //_spriteRenderer.sprite = _sprites[1];
+                    GetComponent<Animator>().SetBool("LightOn", false);
                     switcher.IsRed = true;
                     GameManager.instance.desactivSystem = true;
                 }
@@ -47,7 +48,8 @@ public class LampDesktop : MonoBehaviour
         if (switcher._isUsing)
         {
             MakeLeverTimer();
-            _spriteRenderer.sprite = _sprites[0];
+           //_spriteRenderer.sprite = _sprites[0];
+            GetComponent<Animator>().SetBool("LightOn", true);
         }
     }
 }
