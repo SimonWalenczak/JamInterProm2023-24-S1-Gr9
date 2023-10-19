@@ -5806,7 +5806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActualTimer: 0
-  _minTimerValue: 6
+  _minTimerValue: 8
   _maxTimerValue: 12
   Type: 2
 --- !u!114 &622174420

@@ -51,8 +51,8 @@ public class Keypad : MonoBehaviour
 
     public void Number(int number)
     {
-        if (Screen6Manager.Instance.screen6.IsBugged && Screen6Manager.Instance.screen6.IsBroken == false /*&&
-            GameManager.instance.MULTI3Unlock*/)
+        if (Screen6Manager.Instance.screen6.IsBugged && Screen6Manager.Instance.screen6.IsBroken == false &&
+            GameManager.instance.MULTI3Unlock && GameManager.instance.desactivSystem == false)
         {
             Ans += number.ToString();
 
