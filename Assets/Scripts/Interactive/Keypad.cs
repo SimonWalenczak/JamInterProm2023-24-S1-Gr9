@@ -23,6 +23,8 @@ public class Keypad : MonoBehaviour
 
     [HideInInspector] public bool CanCreateCode;
 
+    public List<Button> DigiButtons;
+
     private void Start()
     {
         indexTry = 0;
@@ -78,6 +80,17 @@ public class Keypad : MonoBehaviour
 
     private void Update()
     {
+        foreach (Button button in DigiButtons)
+        {
+            if (GameManager.instance.desactivSystem == true)
+            {
+                button.enabled = false;
+            }
+            else
+            {
+                button.enabled = true;
+            }
+        }
         //Display
         AwnserText.text = Answer;
 

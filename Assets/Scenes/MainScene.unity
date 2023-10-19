@@ -1285,6 +1285,7 @@ Transform:
   - {fileID: 1973082043}
   - {fileID: 1145846385}
   - {fileID: 858636088}
+  - {fileID: 440360783}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1940,6 +1941,17 @@ MonoBehaviour:
   TimerBetweenCodes: 5
   actualTimerBetweenCodes: 0
   CanCreateCode: 0
+  DigiButtons:
+  - {fileID: 348462865}
+  - {fileID: 231239600}
+  - {fileID: 1830291297}
+  - {fileID: 879550070}
+  - {fileID: 1145393797}
+  - {fileID: 1543430971}
+  - {fileID: 1943106559}
+  - {fileID: 1730686162}
+  - {fileID: 954101740}
+  - {fileID: 1817173318}
 --- !u!1 &178114868
 GameObject:
   m_ObjectHideFlags: 0
@@ -2358,8 +2370,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActualTimer: 0
-  _minTimerValue: 6
-  _maxTimerValue: 10
+  _minTimerValue: 1
+  _maxTimerValue: 1
   Type: 1
 --- !u!114 &221901561
 MonoBehaviour:
@@ -3515,12 +3527,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440360782}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.876, y: -1.756, z: 0.07780216}
+  m_LocalPosition: {x: 5.754361, y: -3.0464756, z: 0.07780216}
   m_LocalScale: {x: 0.7455702, y: 0.7455702, z: 0.7455702}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1820088088}
-  m_RootOrder: -2
+  m_Father: {fileID: 100567816}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &440360784
 SpriteRenderer:
@@ -4673,7 +4685,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5682,7 +5694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minChanceValue: 1
-  maxChanceValue: 3
+  maxChanceValue: 1
   IsBroken: 0
   IsBugged: 0
   ScreenBugged: {fileID: 520665324}
@@ -5806,8 +5818,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActualTimer: 0
-  _minTimerValue: 8
-  _maxTimerValue: 12
+  _minTimerValue: 1
+  _maxTimerValue: 1
   Type: 2
 --- !u!114 &622174420
 MonoBehaviour:
@@ -11294,7 +11306,7 @@ MonoBehaviour:
   TimeMultiplicator3: 0
   startTimerMulti1: 30
   startTimerMulti2: 60
-  startTimerMulti3: 90
+  startTimerMulti3: 10
   firstMultiplicator2: 1
   firstMultiplicator3: 1
   RepeatTimerMulti1: 30
@@ -14193,7 +14205,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 440360783}
   - {fileID: 2039779121}
   - {fileID: 873522832}
   - {fileID: 594065817}
